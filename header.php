@@ -88,44 +88,30 @@
 
 <?php wp_body_open(); ?>
 <div class="wrapper js-container"><!--Do not delete!-->
-
-    <header class="page-header fixed-to-top">
+    <header class="header hide-on-mobile">
         <div class="container">
             <div class="row align-items-center">
-                <div class="col-12 col-sm-12 col-md-2 col-lg-2 col-xl-2">
+                <div class="col-12 col-lg-4">
                     <div class="logo">
                         <?php get_default_logo_link([
                             'name' => 'logo.svg',
                             'options' => [
                                 'class' => 'logo-img',
-                                'width' => 100,
-                                'height' => 50,
+                                'width' => 96,
+                                'height' => 96,
                             ],
                         ])
                         ?>
+                        <div class="logo__caption">
+                            <p class="logo__title"><?php echo bloginfo('name'); ?></p>
+                            <p class="logo__description"><?php echo bloginfo('description'); ?></p>
+                        </div>
                     </div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-7 col-lg-7 col-xl-7">
-                    <div class="nav-wrapper">
-                        <?php if (has_nav_menu('main-nav')) { ?>
-                            <nav class="nav js-menu">
-                                <button type="button" tabindex="0"
-                                        class="menu-item-close menu-close js-menu-close"></button>
-                                <?php wp_nav_menu(array(
-                                    'theme_location' => 'main-nav',
-                                    'container' => false,
-                                    'menu_class' => 'menu-container',
-                                    'menu_id' => '',
-                                    'fallback_cb' => 'wp_page_menu',
-                                    'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
-                                    'depth' => 3
-                                )); ?>
-                            </nav>
-                        <?php } ?>
+                <div class="col-12 col-lg-8">
+                    <div class="header__wrapper">
                         <?php if (has_nav_menu('language-switcher')) { ?>
-                            <nav class="nav js-menu">
-                                <button type="button" tabindex="0"
-                                        class="menu-item-close menu-close js-menu-close"></button>
+                            <nav class="nav language-switcher">
                                 <?php wp_nav_menu(array(
                                     'theme_location' => 'language-switcher',
                                     'container' => false,
@@ -137,21 +123,76 @@
                                 )); ?>
                             </nav>
                         <?php } ?>
+                        <?php if (has_phones()) { ?>
+                            <ul class="phone-dropdown">
+                                <li class="phone-dropdown__item">
+                                    <?php foreach (get_phones() as $key => $phone) { ?>
+                                    <?php reset(get_phones()); ?>
+                                    <?php if ($key === key(get_phones())) { ?>
+                                    <a href="tel:<?php echo esc_attr(get_phone_number($phone)); ?>"
+                                       class="phone-dropdown__link phone-dropdown--main">
+                                        <?php echo esc_html($phone); ?>
+                                    </a>
+                                    <button type="button" class="phone-dropdown__button js-dropdown"></button>
+                                    <ul class="phone-dropdown__list js-phone-list">
+                                        <?php } else { ?>
+                                            <li class="phone-dropdown__item">
+                                                <a href="tel:<?php echo esc_attr(get_phone_number($phone)); ?>"
+                                                   class="phone-dropdown__link">
+                                                    <?php echo esc_html($phone); ?>
+                                                </a>
+                                            </li>
+                                        <?php } ?>
+                                        <?php } ?>
+                                    </ul>
+                                </li>
+                            </ul>
+                        <?php } ?>
+                        <?php echo do_shortcode('[bw-messengers]'); ?>
+                        <?php
+                        $email = get_theme_mod('bw_additional_email');
+                        if (!empty($email)) { ?>
+                            <a class="header__link" href="mailto:<?php echo esc_attr($email); ?>">
+                                <i class="fal fa-envelope"></i>
+                            </a>
+                        <?php } ?>
+                        <button type="button" class="btn btn-secondary <?php the_lang_class('js-call-back'); ?>">
+                            <?php pll_e('call-back', 'brainworks'); ?>
+                        </button>
                     </div>
                 </div>
-                <div class="col-12 col-sm-12 col-md-3 col-lg-3 col-xl-3">
-                    <button type="button" class="btn btn-secondary btn-block <?php the_lang_class('js-call-back'); ?>">
-                        <?php _e('Call back', 'brainworks'); ?>
-                    </button>
-                </div>
+            </div>
+        </div>
+        <div class="nav-wrapper">
+            <div class="container">
+                <?php if (has_nav_menu('main-nav')) { ?>
+                    <nav class="nav js-menu">
+                        <button type="button" tabindex="0"
+                                class="menu-item-close menu-close js-menu-close"></button>
+                        <?php wp_nav_menu(array(
+                            'theme_location' => 'main-nav',
+                            'container' => false,
+                            'menu_class' => 'menu-container',
+                            'menu_id' => '',
+                            'fallback_cb' => 'wp_page_menu',
+                            'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
+                            'depth' => 3
+                        )); ?>
+                    </nav>
+                <?php } ?>
             </div>
         </div>
     </header>
 
     <!-- Mobile menu start-->
     <div class="nav-mobile-header">
-        <div class="social-mob"><?php echo do_shortcode('[bw-social]'); ?></div>
-        <div class="logo"><?php get_default_logo_link(); ?></div>
+        <div class="logo">
+            <?php get_default_logo_link(); ?>
+            <div class="logo__caption">
+                <p class="logo__title"><?php echo bloginfo('name'); ?></p>
+                <p class="logo__description"><?php echo bloginfo('description'); ?></p>
+            </div>
+        </div>
         <button class="hamburger js-hamburger" type="button" tabindex="0">
         <span class="hamburger-box">
             <span class="hamburger-inner"></span>
