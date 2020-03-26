@@ -211,6 +211,9 @@
                 'items_wrap' => '<ul id="%1$s" class="%2$s">%3$s</ul>',
                 'depth' => 3
             )); ?>
+            <div class="messenger-mobile">
+                <?php echo do_shortcode('[bw-messengers]'); ?>
+            </div>
             <?php if (has_nav_menu('language-switcher')) { ?>
                 <div class="mobile-language">
                     <?php wp_nav_menu(array(

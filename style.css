@@ -13262,6 +13262,7 @@ fieldset:disabled a.btn {
     align-items: center;
     position: fixed;
     width: 100%;
+    height: 70px;
     padding: 10px 15px;
     top: 0;
     left: 0;
@@ -13454,6 +13455,10 @@ fieldset:disabled a.btn {
   left: 0;
   top: 100%;
   z-index: 1;
+}
+
+.messenger-mobile {
+  margin-top: 15px;
 }
 
 .sidebar .widget_nav_menu {
@@ -13670,7 +13675,7 @@ body {
   position: relative;
   overflow-x: hidden;
   min-height: 100%;
-  padding-top: 75px;
+  padding-top: 70px;
 }
 
 @media screen and (min-width: 1025px) {
