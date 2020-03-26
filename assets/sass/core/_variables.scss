@@ -35,6 +35,7 @@ $logo_description_color: rgba(214, 228, 249, 0.32);
 $border_round_radius: 50%;
 $nav_border_color: #212121;
 $glass_bg_color: rgba(0, 0, 0, 0.5);
+$footer_text_color: #656c76;
 
 // SELECTION: цвет фона и текста при выделении его курсором
 $selectionBgColor: $themeColorTwo;
@@ -86,12 +87,12 @@ $menu-close-color: #fff;
 $menuContainerMobilePaddingTop: 20%;
 
 // TITLES
-$titleFontColor: $themeColorOne;
+$titleFontColor: $primary_color_1;
 $titleFontColorActive: lighten($titleFontColor, 10%);
 
 // LINKS
-$linkFontColor: #000;
-$linkFontColorActive: lighten($linkFontColor, 20%);
+$linkFontColor: $primary_color_1;
+$linkFontColorActive: $themeColorThree;
 
 // TABLE
 $tableBgColor: $themeColorTwo;
@@ -123,8 +124,8 @@ $inputFieldMinHeight: 38px;
 $formBgColor: lighten($themeColorOne, 75%);
 
 // FOOTER
-$footerBgColor: $themeColorOne;
-$footerFontColor: #fff;
+$footerBgColor: $themeColorTwo;
+$footerFontColor: $primary_color_1;
 $footerLinkColorActive: darken($footerFontColor, 5%);
 
 // Pagination
