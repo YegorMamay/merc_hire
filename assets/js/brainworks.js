@@ -256,4 +256,8 @@
     $(".js-menu-close, .menu-link").on("click", function() {
         $("body").removeClass("body-overflow");
     });
+    $(".js-footer-toggle").on("click", function() {
+        $(this).toggleClass("active");
+        $(this).siblings().toggleClass("active");
+    });
 })(window, document, jQuery, window.jpAjax);

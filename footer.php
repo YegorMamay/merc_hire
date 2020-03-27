@@ -32,7 +32,10 @@
                 <div class="col-12 col-lg-3">
                     <?php if (has_nav_menu('footer-nav')) { ?>
                         <nav class="footer__list">
-                            <p class="footer__column-title"><?php echo $footer_titles['footer_title_about']; ?></p>
+                            <p class="footer__column-title footer--padding js-footer-toggle">
+                                <?php echo $footer_titles['footer_title_about']; ?>
+                                <button class="footer__btn-arrow" type="button"></button>
+                            </p>
                             <?php wp_nav_menu(array(
                                 'theme_location' => 'footer-nav',
                                 'container' => false,
@@ -48,7 +51,10 @@
                 <div class="col-12 col-lg-3">
                     <?php if (has_nav_menu('footer-categories')) { ?>
                         <nav class="footer__list">
-                            <p class="footer__column-title"><?php echo $footer_titles['footer_title_categories']; ?></p>
+                            <p class="footer__column-title footer--padding js-footer-toggle">
+                                <?php echo $footer_titles['footer_title_categories']; ?>
+                                <button class="footer__btn-arrow" type="button"></button>
+                            </p>
                             <?php wp_nav_menu(array(
                                 'theme_location' => 'footer-categories',
                                 'container' => false,
@@ -97,7 +103,8 @@
                     <div class="footer__item-wrapper">
                         <?php foreach ($footer_payment as $option) { ?>
                             <a class="footer__payment-link" href="<?php echo $option['footer_link']; ?>">
-                                <img class="footer__payment-logo" src="<?php echo $option['footer_link_image']; ?>" alt="payment" />
+                                <img class="footer__payment-logo" src="<?php echo $option['footer_link_image']; ?>"
+                                     alt="payment"/>
                             </a>
                         <?php } ?>
                     </div>
