@@ -127,7 +127,6 @@
                             <ul class="phone-dropdown">
                                 <li class="phone-dropdown__item">
                                     <?php foreach (get_phones() as $key => $phone) { ?>
-                                    <?php reset(get_phones()); ?>
                                     <?php if ($key === key(get_phones())) { ?>
                                     <a href="tel:<?php echo esc_attr(get_phone_number($phone)); ?>"
                                        class="phone-dropdown__link phone-dropdown--main">
