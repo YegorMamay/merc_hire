@@ -1,6 +1,6 @@
 <footer class="footer js-footer">
     <div class="footer__wrapper">
-        <?php $footer_titles = get_field('footer_titles'); ?>
+        <?php $footer_titles = get_field('footer_titles' , pll_current_language('slug')); ?>
         <div class="container">
             <?php if (is_active_sidebar('footer-widget-area')) : ?>
                 <div class="pre-footer">
@@ -90,7 +90,7 @@
                 </div>
                 <div class="footer__col">
                     <div class="footer__link-section">
-                        <?php $footer_links = get_field('footer_list'); ?>
+                        <?php $footer_links = get_field('footer_list', pll_current_language('slug')); ?>
                         <?php foreach ($footer_links as $content) { ?>
                             <a class="footer__links" href="<?php echo $content['footer_link']; ?>">
                                 <?php echo $content['footer_text_link']; ?>
