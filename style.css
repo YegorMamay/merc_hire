@@ -11399,6 +11399,30 @@ select {
   }
 }
 
+.main-title {
+  margin: 10px 0 15px;
+}
+
+.categories-section {
+  padding: 25px 0;
+}
+
+.categories-section__description {
+  color: #656c76;
+  text-align: center;
+  font-size: 18px;
+}
+
+.categories-section__wrapper {
+  padding-top: 30px;
+}
+
+@media screen and (min-width: 992px) {
+  .categories-section {
+    padding: 4% 0;
+  }
+}
+
 ol.commentlist .comment-body {
   margin-bottom: 25px;
 }
@@ -11608,7 +11632,7 @@ h1, h2, h3, h4, h5, h6, h1.hero-title {
   color: #ffffff;
   font-family: "Tinos", serif;
   line-height: 1.2;
-  font-weight: 700;
+  font-weight: normal;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, h1.hero-title a {
@@ -11623,7 +11647,7 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover, h1.hero-
   color: #ffffff;
   font-family: "Tinos", serif;
   line-height: 1.2;
-  font-weight: 700;
+  font-weight: normal;
 }
 
 h1.hero-title {

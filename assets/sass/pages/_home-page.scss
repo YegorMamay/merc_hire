@@ -1,0 +1,23 @@
+.main-title {
+  margin: 10px 0 15px;
+}
+
+.categories-section {
+  padding: 25px 0;
+
+  &__description {
+    color: $description_text_color;
+    text-align: center;
+    font-size: 18px;
+  }
+
+  &__wrapper {
+    padding-top: 30px;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .categories-section {
+    padding: 4% 0;
+  }
+}
