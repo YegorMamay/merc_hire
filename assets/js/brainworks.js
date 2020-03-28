@@ -260,4 +260,55 @@
         $(this).toggleClass("active");
         $(this).siblings().toggleClass("active");
     });
+    (function() {
+        $(".js-top-slider").slick({
+            slidesToShow: 5,
+            arrows: false,
+            autoplay: false,
+            speed: 300,
+            dots: false,
+            infinite: true,
+            focusOnSelect: true,
+            asNavFor: ".js-bottom-slider",
+            responsive: [ {
+                breakpoint: 960,
+                settings: {
+                    slidesToShow: 4
+                }
+            }, {
+                breakpoint: 780,
+                settings: {
+                    slidesToShow: 3
+                }
+            }, {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2
+                }
+            }, {
+                breakpoint: 450,
+                settings: {
+                    slidesToShow: 1
+                }
+            } ]
+        });
+        $(".js-bottom-slider").slick({
+            infinite: true,
+            speed: 300,
+            dots: false,
+            asNavFor: ".js-top-slider",
+            arrows: true,
+            nextArrow: '<div class="slick-next"><svg class="slider-icon"><use xlink:href="#arrow-right"></use></svg></div>',
+            prevArrow: '<div class="slick-prev"><svg class="slider-icon"><use xlink:href="#arrow-left"></use></svg></div>',
+            focusOnSelect: false,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            responsive: [ {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 1
+                }
+            } ]
+        });
+    })();
 })(window, document, jQuery, window.jpAjax);

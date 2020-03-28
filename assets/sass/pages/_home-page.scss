@@ -14,6 +14,57 @@
   &__wrapper {
     padding-top: 30px;
   }
+
+  &__list {
+    @extend %reset-list;
+
+    & .slick-list {
+      padding: 8px 0;
+    }
+
+    & .menu-item {
+      padding: 20px 15px;
+      margin: 0 0 -1px;
+      cursor: pointer;
+      position: relative;
+      border-bottom: 1px solid $dark_border_color;
+
+      &.slick-current {
+        border-bottom: 2px solid $themeColorThree;
+
+        &:before {
+          content: '';
+          width: 0;
+          height: 0;
+          border-left: 12px solid transparent;
+          border-right: 12px solid transparent;
+          border-top: 7px solid $themeColorThree;
+          position: absolute;
+          transform: translateX(-50%);
+          left: 50%;
+          bottom: -7px;
+          z-index: 1;
+        }
+      }
+
+      & .menu-link {
+        pointer-events: none;
+        font-size: 18px;
+        text-align: center;
+        display: block;
+        width: 100%;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .categories-section {
+    &__list {
+      padding-right: 15px;
+      padding-left: 15px;
+    }
+  }
 }
 
 @media screen and (min-width: 992px) {

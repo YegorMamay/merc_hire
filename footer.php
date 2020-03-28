@@ -118,7 +118,17 @@
 
 <?php scroll_top(); ?>
 
-<div class="is-hide"><?php svg_sprite(); ?></div>
+<div class="is-hide">
+    <?php svg_sprite(); ?>
+    <svg width="0" height="0" class="hidden">
+        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.207 32.252" id="arrow-left">
+            <path d="M12.297 32.252L0 16.103 12.262 0h3.909L3.909 16.103l12.298 16.149z"></path>
+        </symbol>
+        <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16.207 32.252" id="arrow-right">
+            <path d="M3.909 32.252l12.298-16.149L3.944 0H.035l12.262 16.103L0 32.252z"></path>
+        </symbol>
+    </svg>
+</div>
 
 <?php wp_footer(); ?>
 

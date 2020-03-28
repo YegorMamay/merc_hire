@@ -133,7 +133,7 @@ q:after {
   transition: .2s;
 }
 
-.phone, .phone-dropdown, .phone-dropdown__list, .social, .messenger, .lang, .nav .menu, .nav .menu-container, .nav .sub-menu, .footer__nav {
+.categories-section__list, .phone, .phone-dropdown, .phone-dropdown__list, .social, .messenger, .lang, .nav .menu, .nav .menu-container, .nav .sub-menu, .footer__nav {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -9921,7 +9921,7 @@ table th[class*="col-"] {
   transition: .2s;
 }
 
-.phone, .phone-dropdown, .phone-dropdown__list, .social, .messenger, .lang, .nav .menu, .nav .menu-container, .nav .sub-menu, .footer__nav {
+.categories-section__list, .phone, .phone-dropdown, .phone-dropdown__list, .social, .messenger, .lang, .nav .menu, .nav .menu-container, .nav .sub-menu, .footer__nav {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -10516,7 +10516,7 @@ select {
   transition: .2s;
 }
 
-.phone, .phone-dropdown, .phone-dropdown__list, .social, .messenger, .lang, .nav .menu, .nav .menu-container, .nav .sub-menu, .footer__nav {
+.categories-section__list, .phone, .phone-dropdown, .phone-dropdown__list, .social, .messenger, .lang, .nav .menu, .nav .menu-container, .nav .sub-menu, .footer__nav {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -11415,6 +11415,52 @@ select {
 
 .categories-section__wrapper {
   padding-top: 30px;
+}
+
+.categories-section__list .slick-list {
+  padding: 8px 0;
+}
+
+.categories-section__list .menu-item {
+  padding: 20px 15px;
+  margin: 0 0 -1px;
+  cursor: pointer;
+  position: relative;
+  border-bottom: 1px solid #212121;
+}
+
+.categories-section__list .menu-item.slick-current {
+  border-bottom: 2px solid #d9252b;
+}
+
+.categories-section__list .menu-item.slick-current:before {
+  content: '';
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 7px solid #d9252b;
+  position: absolute;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);
+  left: 50%;
+  bottom: -7px;
+  z-index: 1;
+}
+
+.categories-section__list .menu-item .menu-link {
+  pointer-events: none;
+  font-size: 18px;
+  text-align: center;
+  display: block;
+  width: 100%;
+}
+
+@media screen and (min-width: 600px) {
+  .categories-section__list {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
 }
 
 @media screen and (min-width: 992px) {
@@ -14002,8 +14048,17 @@ fieldset:disabled a.btn {
   }
 }
 
+.list-cat {
+  padding: 30px 0;
+}
+
 .list-cat__item {
-  margin-bottom: 20px;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.list-cat__item.slick-current .list-cat__link {
+  text-decoration: none;
 }
 
 .list-cat__link {
@@ -14021,8 +14076,79 @@ fieldset:disabled a.btn {
   -ms-flex-pack: center;
   justify-content: center;
   width: 100%;
-  max-width: 400px;
   margin: 0 auto;
+  text-decoration: underline;
+}
+
+.list-cat__link:hover {
+  text-decoration: none;
+}
+
+.list-cat__title {
+  font-size: 20px;
+  text-align: center;
+  width: 100%;
+  padding-top: 8px;
+}
+
+.list-cat .slick-arrow {
+  background: rgba(0, 0, 0, 0.5);
+  width: 30px;
+  height: 40px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  position: absolute;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  top: 50%;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.list-cat .slick-arrow.slick-prev {
+  left: 0;
+}
+
+.list-cat .slick-arrow.slick-next {
+  right: 0;
+}
+
+.list-cat .slick-arrow .slider-icon {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  fill: #ffffff;
+}
+
+@media screen and (min-width: 600px) {
+  .list-cat__item {
+    padding: 10px 15px;
+  }
+  .list-cat .slick-arrow {
+    width: 40px;
+    height: 60px;
+  }
+  .list-cat .slick-arrow.slick-prev {
+    left: 15px;
+  }
+  .list-cat .slick-arrow.slick-next {
+    right: 15px;
+  }
+  .list-cat .slider-icon {
+    width: 30px;
+    height: 30px;
+  }
 }
 
 ::-moz-selection {

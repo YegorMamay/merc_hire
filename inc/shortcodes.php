@@ -676,7 +676,7 @@ function cat_and_child_id( $atts ) {
             'hide_empty' => false,
         ] );
 
-        $html = '<div class="row list-cat">';
+        $html = '<div class="list-cat js-bottom-slider">';
 
         foreach ( $arr_id as $cat ) {
             $cat_id = $cat;
@@ -690,7 +690,7 @@ function cat_and_child_id( $atts ) {
                     $term_photo = get_field( 'cat_img', $term );
 
                     if ( $term_cat_id == $cat_id ) {
-                        $html .= sprintf( '<div class="list-cat__item col-12 col-md-4 col-lg-4"><a href="%s" class="list-cat__link"><img src="%s" class="list-cat__img" alt="image"><div class="list-cat__title">%s</div></a></div>', $cat_url, $term_photo[ 'url' ], $term_cat_name );
+                        $html .= sprintf( '<div class="list-cat__item"><a href="%s" class="list-cat__link"><img src="%s" class="list-cat__img" alt="image"><div class="list-cat__title">%s</div></a></div>', $cat_url, $term_photo[ 'url' ], $term_cat_name );
                     }
                 }
             }
