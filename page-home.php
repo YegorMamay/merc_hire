@@ -29,4 +29,24 @@
             </section>
         </div>
     </section>
+    <section class="block-advantages">
+        <div class="container">
+            <h2 class="main-title h2"><?php echo get_post_meta(get_the_ID(), 'advantages_title', true); ?></h2>
+            <div class="block-advantages__wrapper">
+                <?php
+                $advantages_list = get_field('advantages_list');
+                foreach ($advantages_list as $content) { ?>
+                    <div class="block-advantages__item-wrapper">
+                        <div class="block-advantages__item">
+                            <img class="block-advantages__icon" src="<?php echo $content['advantages_icon']; ?>"
+                                 alt="icon"/>
+                            <p class="block-advantages__description">
+                                <?php echo $content['advantages_description']; ?>
+                            </p>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </section>
 <?php get_footer(); ?>

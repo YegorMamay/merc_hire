@@ -1,5 +1,16 @@
 .main-title {
   margin: 10px 0 15px;
+  text-align: center;
+}
+
+@media screen and (min-width: 992px) {
+  .main-title {
+    text-align: left;
+
+    &.text-center {
+      text-align: center;
+    }
+  }
 }
 
 .categories-section {
@@ -70,5 +81,82 @@
 @media screen and (min-width: 992px) {
   .categories-section {
     padding: 4% 0;
+  }
+}
+
+.block-advantages {
+  background: $themeColorTwo;
+  width: 100%;
+  padding: 25px 0;
+  margin: 25px 0;
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: auto;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding: 30px 0;
+  }
+
+  &__item-wrapper {
+    width: 100%;
+    margin-bottom: 25px;
+    padding: 0 15px;
+  }
+
+  &__item {
+    border: 1px solid $dark_border_color;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 15% 20px;
+  }
+
+  &__icon {
+    width: 65px;
+    height: 65px;
+    margin-bottom: 20px;
+  }
+
+  &__description {
+    color: $primary_color_1;
+    font-size: 18px;
+    line-height: normal;
+  }
+}
+
+@media screen and (min-width: 400px) {
+  .block-advantages {
+    &__item-wrapper {
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .block-advantages {
+    &__item-wrapper {
+      width: 33.333%;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .block-advantages {
+    &__item-wrapper {
+      width: 25%;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .block-advantages {
+    padding: 4% 0;
+    margin: 3% 0;
   }
 }
