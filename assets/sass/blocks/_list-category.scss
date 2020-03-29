@@ -12,6 +12,13 @@
     }
   }
 
+  &__img {
+    width: 100%;
+    max-width: 100%;
+    @extend %smooth_animation;
+    transform: none;
+  }
+
   &__link {
     display: flex;
     flex-direction: column;
@@ -20,17 +27,27 @@
     width: 100%;
     margin: 0 auto;
     text-decoration: underline;
+    overflow: hidden;
 
     &:hover {
       text-decoration: none;
     }
+
+    &:hover {
+      & .list-cat__img {
+        @extend %smooth_animation;
+        transform: scale(1.03);
+      }
+    }
   }
 
   &__title {
+    background: $themeColorOne;
+    color: $primary_color_1;
     font-size: 20px;
     text-align: center;
     width: 100%;
-    padding-top: 8px;
+    padding: 10px 0;
   }
 
   & .slick-arrow {

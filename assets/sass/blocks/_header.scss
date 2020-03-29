@@ -1,3 +1,9 @@
+.home {
+  & .header {
+    margin-bottom: 0;
+  }
+}
+
 .header {
   padding: 10px 0 0;
   background-color: $headerBgColor;
