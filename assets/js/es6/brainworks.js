@@ -533,7 +533,7 @@
             slidesToShow: 5,
             arrows: false,
             autoplay: false,
-            speed: 300,
+            speed: 700,
             dots: false,
             infinite: true,
             focusOnSelect: true,
@@ -568,7 +568,7 @@
 
         $('.js-bottom-slider').slick({
             infinite: true,
-            speed: 300,
+            speed: 700,
             dots: false,
             asNavFor: '.js-top-slider',
             arrows: true,
@@ -580,6 +580,38 @@
             responsive: [
                 {
                     breakpoint: 600,
+                    settings: {
+                        slidesToShow: 1,
+                    }
+                }
+            ]
+        });
+
+        $('.js-client-slider').slick({
+            slidesToShow: 4,
+            arrows: true,
+            nextArrow: '<div class="slick-next"><svg class="slider-icon"><use xlink:href="#arrow-right"></use></svg></div>',
+            prevArrow: '<div class="slick-prev"><svg class="slider-icon"><use xlink:href="#arrow-left"></use></svg></div>',
+            autoplay: false,
+            speed: 600,
+            dots: false,
+            infinite: true,
+            focusOnSelect: true,
+            responsive: [
+                {
+                    breakpoint: 992,
+                    settings: {
+                        slidesToShow: 3,
+                    }
+                },
+                {
+                    breakpoint: 700,
+                    settings: {
+                        slidesToShow: 2,
+                    }
+                },
+                {
+                    breakpoint: 450,
                     settings: {
                         slidesToShow: 1,
                     }

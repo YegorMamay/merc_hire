@@ -49,4 +49,45 @@
             </div>
         </div>
     </section>
+    <section class="order-info">
+        <div class="container">
+            <h2 class="main-title h2 text-center"><?php echo get_post_meta(get_the_ID(), 'order_info_title', true); ?></h2>
+            <div class="order-info__wrapper">
+                <div class="order-info__list">
+                    <img class="order-info__logo" src="/wp-content/themes/mercedes_hire/assets/img/mercedes-logo.png"
+                         alt="logo"/>
+                    <div class="order-info__item-wrapper">
+                        <?php
+                        $order_info_list = get_field('order_info_list');
+                        foreach ($order_info_list as $item) { ?>
+                            <div class="order-info__item">
+                                <img class="order-info__icon" src="<?php echo $item['order_info_icon']; ?>" alt="icon">
+                                <div class="order-info__caption">
+                                    <p class="order-info__item-title"><?php echo $item['order_info_text']; ?></p>
+                                    <div class="order-info__description"><?php echo $item['order_info_description']; ?></div>
+                                </div>
+                            </div>
+                        <?php } ?>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+<?php // echo layerslider(4); ?>
+    <section class="bottom-section">
+        <div class="container">
+            <h2 class="main-title h2"><?php echo get_post_meta(get_the_ID(), 'client_title', true); ?></h2>
+            <div class="bottom-section__wrapper js-client-slider">
+                <?php
+                $client_list = get_field('client_list');
+                foreach ($client_list as $content) { ?>
+                    <div class="bottom-section__item-wrapper">
+                        <div class="bottom-section__item">
+                            <img class="bottom-section__logo" src="<?php echo $content['client_logo']; ?>" alt="logo"/>
+                        </div>
+                    </div>
+                <?php } ?>
+            </div>
+        </div>
+    </section>
 <?php get_footer(); ?>
