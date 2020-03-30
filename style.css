@@ -12974,7 +12974,7 @@ hr.style-two {
   padding: 10px;
   left: 0;
   top: 100%;
-  z-index: 1;
+  z-index: 33;
 }
 
 .phone-dropdown__link {
