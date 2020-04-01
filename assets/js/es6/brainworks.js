@@ -529,8 +529,13 @@
     });
 
     (function () {
+
+        $('.js-top-slider .menu-link').on('click', function (event) {
+            event.preventDefault();
+        });
+
         $('.js-top-slider').slick({
-            slidesToShow: 5,
+            slidesToShow: 6,
             arrows: false,
             autoplay: false,
             speed: 700,
@@ -575,7 +580,7 @@
             nextArrow: '<div class="slick-next"><svg class="slider-icon"><use xlink:href="#arrow-right"></use></svg></div>',
             prevArrow: '<div class="slick-prev"><svg class="slider-icon"><use xlink:href="#arrow-left"></use></svg></div>',
             focusOnSelect: false,
-            slidesToShow: 2,
+            slidesToShow: 1,
             slidesToScroll: 1,
             responsive: [
                 {

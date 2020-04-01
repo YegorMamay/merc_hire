@@ -11459,7 +11459,6 @@ select {
 }
 
 .categories-section__list .menu-item .menu-link {
-  pointer-events: none;
   font-size: 18px;
   text-align: center;
   display: block;
