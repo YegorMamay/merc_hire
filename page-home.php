@@ -43,6 +43,9 @@
                             <p class="block-advantages__description">
                                 <?php echo $content['advantages_description']; ?>
                             </p>
+                            <div class="block-advantages__text-block">
+                                <?php echo $content['advantages_text']; ?>
+                            </div>
                         </div>
                     </div>
                 <?php } ?>
@@ -87,6 +90,13 @@
                         </div>
                     </div>
                 <?php } ?>
+            </div>
+        </div>
+    </section>
+    <section class="seo-text">
+        <div class="container">
+            <div class="seo-text__wrapper">
+                <?php echo get_post_meta(get_the_ID(), 'seo_text_field', true); ?>
             </div>
         </div>
     </section>
