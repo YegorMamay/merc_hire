@@ -23,10 +23,6 @@
                             ],
                         ])
                         ?>
-                        <div class="footer-logo__caption">
-                            <p class="footer-logo__title"><?php echo bloginfo('name'); ?></p>
-                            <p class="footer-logo__description"><?php echo bloginfo('description'); ?></p>
-                        </div>
                     </div>
                 </div>
                 <div class="col-12 col-lg-3">

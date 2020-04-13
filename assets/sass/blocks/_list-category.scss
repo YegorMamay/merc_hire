@@ -68,6 +68,13 @@
     z-index: 1;
     cursor: pointer;
 
+    &:hover {
+      & .slider-icon {
+        @extend %smooth_animation;
+        fill: $themeColorThree;
+      }
+    }
+
     &.slick-prev {
       left: 0;
     }
@@ -80,7 +87,9 @@
       display: inline-block;
       width: 20px;
       height: 20px;
+      stroke-width: 3px;
       fill: $primary_color_1;
+      @extend %smooth_animation;
     }
   }
 }
@@ -97,16 +106,24 @@
 
       &.slick-prev {
         left: 15px;
+
+        & .slider-icon {
+          padding-right: 2px;
+        }
       }
 
       &.slick-next {
         right: 15px;
-      }
-    }
 
-    & .slider-icon {
-      width: 30px;
-      height: 30px;
+        & .slider-icon {
+          padding-left: 2px;
+        }
+      }
+
+      & .slider-icon {
+        width: 20px;
+        height: 28px;
+      }
     }
   }
 }

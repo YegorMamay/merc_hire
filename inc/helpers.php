@@ -13,11 +13,11 @@ function get_phone_number($phone_number)
 }
 
 /**
- * @see get_phone_number()
- *
  * @param $phone_number
  *
  * @return void
+ * @see get_phone_number()
+ *
  */
 function the_phone_number($phone_number)
 {
@@ -64,8 +64,8 @@ function get_scroll_top()
 }
 
 /**
- * @see get_scroll_top()
  * @return void
+ * @see get_scroll_top()
  */
 function scroll_top()
 {
@@ -115,11 +115,11 @@ function get_analytics_tracking_code($placed = 'body')
 }
 
 /**
- * @see get_analytics_tracking_code()
- *
  * @param string $placed
  *
  * @return void
+ * @see get_analytics_tracking_code()
+ *
  */
 function analytics_tracking_code($placed = 'body')
 {
@@ -140,11 +140,11 @@ if (!function_exists('get_lang_class')) {
 
 if (!function_exists('the_lang_class')) {
     /**
-     * @see get_lang_class()
-     *
      * @param string $class
      *
      * @return void
+     * @see get_lang_class()
+     *
      */
     function the_lang_class($class)
     {
@@ -156,8 +156,8 @@ if (!function_exists('has_messengers')) {
     /**
      * Determines whether the site has a messenger.
      *
-     * @see get_messengers()
      * @return bool
+     * @see get_messengers()
      */
     function has_messengers()
     {
@@ -206,8 +206,8 @@ if (!function_exists('get_messengers')) {
 
 if (!function_exists('has_social')) {
     /**
-     * @see get_social()
      * @return bool
+     * @see get_social()
      */
     function has_social()
     {
@@ -301,8 +301,8 @@ if (!function_exists('get_social')) {
 
 if (!function_exists('has_phones')) {
     /**
-     * @see get_phones()
      * @return bool
+     * @see get_phones()
      */
     function has_phones()
     {
@@ -352,8 +352,8 @@ if (!function_exists('svg_sprite')) {
     /**
      * Display svg sprite
      *
-     * @see get_svg_sprite()
      * @return void
+     * @see get_svg_sprite()
      */
     function svg_sprite()
     {
@@ -370,33 +370,37 @@ if (!function_exists('get_default_logo_link')) {
      */
     function get_default_logo_link($args = [])
     {
-	    $defaults = [
-		    'name'    => 'logo.svg',
-		    'options' => [
-			    'class'  => 'logo-img',
-			    'width'  => null,
-			    'height' => null,
-		    ]
-	    ];
+        $defaults = [
+            'name' => 'logo.svg',
+            'options' => [
+                'class' => 'logo-img',
+                'width' => null,
+                'height' => null,
+            ]
+        ];
 
-	    $args = wp_parse_args( $args, $defaults );
+        $args = wp_parse_args($args, $defaults);
 
-	    $attr = [];
+        $attr = [];
 
-	    foreach ( $args['options'] as $name => $value ) {
-		    if ( empty( $value ) ) continue;
+        foreach ($args['options'] as $name => $value) {
+            if (empty($value)) continue;
 
-		    $attr[] = sprintf( '%s="%s"', $name, $value );
-	    }
+            $attr[] = sprintf('%s="%s"', $name, $value);
+        }
 
-	    $attr = implode( ' ', $attr );
+        $attr = implode(' ', $attr);
 
-        /*$desc = sprintf('<span class="logo-desc screen-reader-text">%s</span>', get_bloginfo('description'));*/
+        $logo_title = sprintf('<p class="logo__title">%s</p>', get_bloginfo('name'));
+
+        $logo_description = sprintf('<p class="logo__description">%s</p>', get_bloginfo('description'));
+
+        $logo_caption = sprintf('<div class="logo__caption">%s%s</div>', $logo_title, $logo_description);
+
 
         if (has_custom_logo()) {
 
             the_custom_logo();
-            /*echo $desc;*/
 
         } else {
 
@@ -404,13 +408,11 @@ if (!function_exists('get_default_logo_link')) {
 
             $img = sprintf('<img src="%s" alt="%s" %s>', esc_url($file), get_bloginfo('name'), $attr);
 
-            $link = sprintf('<a class="logo-link" href="%s">%s</a>', esc_url(home_url('/')), $img);
+            $link = sprintf('<a class="logo-link" href="%s">%s%s</a>', esc_url(home_url('/')), $img, $logo_caption);
 
-            $span = sprintf('<span class="logo-link">%s</span>', $img);
+            $span = sprintf('<span class="logo-link">%s%s</span>', $img, $logo_caption);
 
             $html = is_front_page() ? $span : $link;
-
-            /*$html .= $desc;*/
 
             echo $html;
         }
@@ -531,7 +533,8 @@ if (!function_exists('the_auth_button')) {
      * @param string $login_page_url Url to auth page
      * @return void
      */
-    function the_auth_button ($login_page_url = '/auth') {
+    function the_auth_button($login_page_url = '/auth')
+    {
         $link = $login_page_url;
         $text = __('Login', 'brainworks');
         if (get_auth_session()) {
@@ -542,30 +545,31 @@ if (!function_exists('the_auth_button')) {
     }
 }
 
-if ( ! function_exists( 'woocommerce_cart' ) ) {
-	/**
-	 * Add Cart icon and count to header if WC is active
-	 */
-	function woocommerce_cart() {
-		/**
-		 * @var WooCommerce $wc
-		 * @var WC_Cart $cart
-		 */
-		$wc = WC();
-		$cart = $wc->cart;
+if (!function_exists('woocommerce_cart')) {
+    /**
+     * Add Cart icon and count to header if WC is active
+     */
+    function woocommerce_cart()
+    {
+        /**
+         * @var WooCommerce $wc
+         * @var WC_Cart $cart
+         */
+        $wc = WC();
+        $cart = $wc->cart;
 
-		$cart_url   = esc_url( wc_get_cart_url() );
-		$cart_count = $cart->get_cart_contents_count();
-		$cart_total = $cart->get_cart_total();
+        $cart_url = esc_url(wc_get_cart_url());
+        $cart_count = $cart->get_cart_contents_count();
+        $cart_total = $cart->get_cart_total();
 
-		$title = __( 'View your shopping cart', 'brainworks' );
+        $title = __('View your shopping cart', 'brainworks');
 
-		$count = sprintf('<span class="cart-contents-count">%s</span>', $cart_count);
+        $count = sprintf('<span class="cart-contents-count">%s</span>', $cart_count);
 
-		$link = sprintf( '<a class="cart-contents" href="%s" title="%s">%s</a>',
-			$cart_url, $title, $count
-		);
+        $link = sprintf('<a class="cart-contents" href="%s" title="%s">%s</a>',
+            $cart_url, $title, $count
+        );
 
-		echo $link;
-	}
+        echo $link;
+    }
 }

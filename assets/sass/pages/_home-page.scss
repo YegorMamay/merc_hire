@@ -83,6 +83,68 @@
   }
 }
 
+@media screen and (max-width: 449px) {
+  .categories-section {
+
+    &__list {
+
+      & .slick-list {
+        padding: 8px 0;
+      }
+
+      & .menu-item {
+        padding: 20px 15px;
+        margin: 0 0 -1px;
+        cursor: pointer;
+        position: relative;
+        border-bottom: 1px solid $dark_border_color;
+        text-align: center;
+
+        &.slick-current {
+          border-bottom: 1px solid $dark_border_color;
+
+          &:before {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 12px solid transparent;
+            border-right: 12px solid transparent;
+            border-top: 7px solid $themeColorThree;
+            position: absolute;
+            transform: translateX(-50%);
+            left: 50%;
+            bottom: -7px;
+            z-index: 1;
+          }
+
+          & .menu-link {
+            &:before {
+              content: '';
+              background: $themeColorThree;
+              display: block;
+              width: 100%;
+              height: 2px;
+              position: absolute;
+              transform: translateX(-50%);
+              top: calc(100% + 21px);
+              left: 50%;
+              z-index: 1;
+            }
+          }
+        }
+
+        & .menu-link {
+          font-size: 18px;
+          text-align: center;
+          display: inline-block;
+          width: auto;
+          position: relative;
+        }
+      }
+    }
+  }
+}
+
 .block-advantages {
   background: $themeColorTwo;
   width: 100%;
@@ -395,10 +457,13 @@
         left: 50%;
 
         & .order-info__icon {
-          width: 130px;
-          height: 65px;
-          padding: 0 15px;
-          margin-bottom: 10px;
+          width: 100px;
+          height: 100px;
+          padding: 10px;
+        }
+
+        & .order-info__caption {
+          position: relative;
         }
 
         & .order-info__description {
@@ -408,8 +473,12 @@
           top: 100%;
           z-index: 33;
           padding-top: 15px;
-          width: 300px;
+          width: 400px;
           text-align: center;
+        }
+
+        & .order-info__item-title {
+          margin: 0;
         }
       }
 
@@ -457,7 +526,7 @@
 
 @media screen and (min-width: 992px) {
   .order-info {
-    padding: 5% 0;
+    padding: 10px 0 200px;
   }
 }
 

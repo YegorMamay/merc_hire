@@ -102,10 +102,6 @@
                             ],
                         ])
                         ?>
-                        <div class="logo__caption">
-                            <p class="logo__title"><?php echo bloginfo('name'); ?></p>
-                            <p class="logo__description"><?php echo bloginfo('description'); ?></p>
-                        </div>
                     </div>
                 </div>
                 <div class="col-12 col-lg-8">
@@ -187,10 +183,6 @@
     <div class="nav-mobile-header">
         <div class="logo">
             <?php get_default_logo_link(); ?>
-            <div class="logo__caption">
-                <p class="logo__title"><?php echo bloginfo('name'); ?></p>
-                <p class="logo__description"><?php echo bloginfo('description'); ?></p>
-            </div>
         </div>
         <button class="hamburger js-hamburger" type="button" tabindex="0">
         <span class="hamburger-box">

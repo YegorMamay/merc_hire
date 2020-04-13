@@ -545,7 +545,7 @@
             asNavFor: '.js-bottom-slider',
             responsive: [
                 {
-                    breakpoint: 960,
+                    breakpoint: 1200,
                     settings: {
                         slidesToShow: 4,
                     }
