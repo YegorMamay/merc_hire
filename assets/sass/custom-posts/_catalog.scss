@@ -96,14 +96,6 @@
     outline: none;
   }
 
-  &:hover {
-    & .item-catalog__title {
-      @extend %smooth_animation;
-      color: $themeColorThree;
-      text-decoration: none;
-    }
-  }
-
   &__title {
     color: $primary_color_1;
     display: block;

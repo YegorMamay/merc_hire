@@ -128,7 +128,7 @@ q:after {
   content: none;
 }
 
-.review-social, .review-slider .slick-arrow, .item-catalog, .item-catalog:hover .item-catalog__title, .item-catalog__title:hover, a, .phone-dropdown__button.active:before, .phone-dropdown__button:before, .nav .menu-item-has-children:hover::after, .nav .menu-item-has-children::after, .nav .menu-link, .nav .sub-menu, .nav .sub-menu-link, .footer__column-title.active .footer__btn-arrow:before, .footer__btn-arrow:before, .categories-section .list-cat__img, .categories-section .list-cat__link:hover .list-cat__img, .categories-section .list-cat .slick-arrow:hover .slider-icon, .categories-section .list-cat .slick-arrow .slider-icon, .svg-icon {
+.review-social, .review-slider .slick-arrow, .item-catalog, .item-catalog__title:hover, a, .phone-dropdown__button.active:before, .phone-dropdown__button:before, .nav .menu-item-has-children:hover::after, .nav .menu-item-has-children::after, .nav .menu-link, .nav .sub-menu, .nav .sub-menu-link, .footer__column-title.active .footer__btn-arrow:before, .footer__btn-arrow:before, .categories-section .list-cat__img, .categories-section .list-cat__link:hover .list-cat__img, .categories-section .list-cat .slick-arrow:hover .slider-icon, .categories-section .list-cat .slick-arrow .slider-icon, .svg-icon {
   -webkit-transition: .2s;
   transition: .2s;
 }
@@ -9916,7 +9916,7 @@ table th[class*="col-"] {
   clear: both;
 }
 
-.review-social, .review-slider .slick-arrow, .item-catalog, .item-catalog:hover .item-catalog__title, .item-catalog__title:hover, a, .phone-dropdown__button.active:before, .phone-dropdown__button:before, .nav .menu-item-has-children:hover::after, .nav .menu-item-has-children::after, .nav .menu-link, .nav .sub-menu, .nav .sub-menu-link, .footer__column-title.active .footer__btn-arrow:before, .footer__btn-arrow:before, .categories-section .list-cat__img, .categories-section .list-cat__link:hover .list-cat__img, .categories-section .list-cat .slick-arrow:hover .slider-icon, .categories-section .list-cat .slick-arrow .slider-icon, .svg-icon {
+.review-social, .review-slider .slick-arrow, .item-catalog, .item-catalog__title:hover, a, .phone-dropdown__button.active:before, .phone-dropdown__button:before, .nav .menu-item-has-children:hover::after, .nav .menu-item-has-children::after, .nav .menu-link, .nav .sub-menu, .nav .sub-menu-link, .footer__column-title.active .footer__btn-arrow:before, .footer__btn-arrow:before, .categories-section .list-cat__img, .categories-section .list-cat__link:hover .list-cat__img, .categories-section .list-cat .slick-arrow:hover .slider-icon, .categories-section .list-cat .slick-arrow .slider-icon, .svg-icon {
   -webkit-transition: .2s;
   transition: .2s;
 }
@@ -10511,7 +10511,7 @@ select {
   }
 }
 
-.review-social, .review-slider .slick-arrow, .item-catalog, .item-catalog:hover .item-catalog__title, .item-catalog__title:hover, a, .phone-dropdown__button.active:before, .phone-dropdown__button:before, .nav .menu-item-has-children:hover::after, .nav .menu-item-has-children::after, .nav .menu-link, .nav .sub-menu, .nav .sub-menu-link, .footer__column-title.active .footer__btn-arrow:before, .footer__btn-arrow:before, .categories-section .list-cat__img, .categories-section .list-cat__link:hover .list-cat__img, .categories-section .list-cat .slick-arrow:hover .slider-icon, .categories-section .list-cat .slick-arrow .slider-icon, .svg-icon {
+.review-social, .review-slider .slick-arrow, .item-catalog, .item-catalog__title:hover, a, .phone-dropdown__button.active:before, .phone-dropdown__button:before, .nav .menu-item-has-children:hover::after, .nav .menu-item-has-children::after, .nav .menu-link, .nav .sub-menu, .nav .sub-menu-link, .footer__column-title.active .footer__btn-arrow:before, .footer__btn-arrow:before, .categories-section .list-cat__img, .categories-section .list-cat__link:hover .list-cat__img, .categories-section .list-cat .slick-arrow:hover .slider-icon, .categories-section .list-cat .slick-arrow .slider-icon, .svg-icon {
   -webkit-transition: .2s;
   transition: .2s;
 }
@@ -12324,11 +12324,6 @@ ol.commentlist .comment-body {
 
 .item-catalog:focus {
   outline: none;
-}
-
-.item-catalog:hover .item-catalog__title {
-  color: #d9252b;
-  text-decoration: none;
 }
 
 .item-catalog__title {
