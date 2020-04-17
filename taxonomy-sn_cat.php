@@ -9,11 +9,7 @@
     </div>
 
     <div class="row">
-        <div class="col-12 col-md-3">
-            <?php get_sidebar(); ?>
-        </div>
-
-        <div class="col-12 col-sm-12 col-md-9 col-lg-9 col-xl-9">
+        <div class="col-12">
             <div class="row">
                 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
                 <div class="col-12 col-sm-12 col-md-4">

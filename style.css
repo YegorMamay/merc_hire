@@ -13642,15 +13642,10 @@ fieldset:disabled a.btn {
   }
 }
 
-.home .header {
-  margin-bottom: 0;
-}
-
 .header {
   padding: 10px 0 0;
   background-color: #000000;
   color: #ffffff;
-  margin-bottom: 15px;
 }
 
 .header__wrapper {
@@ -14993,7 +14988,7 @@ img {
 .kama_breadcrumbs {
   padding: 10px 0;
   font-size: 14px;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .page-name {

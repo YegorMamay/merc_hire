@@ -1,14 +1,7 @@
-.home {
-  & .header {
-    margin-bottom: 0;
-  }
-}
-
 .header {
   padding: 10px 0 0;
   background-color: $headerBgColor;
   color: $headerFontColor;
-  margin-bottom: 15px;
 
   &__wrapper {
     display: flex;
