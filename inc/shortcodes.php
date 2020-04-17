@@ -668,6 +668,7 @@ function cat_and_child_id( $atts ) {
     $str = $atts['id'];
     $arr_id = explode( ', ', $str );
     $name_cpt = $atts['term'];
+    $cat_list = $atts['list'];
 
     if ( taxonomy_exists( $name_cpt ) ) {
         $categories = get_categories( [
@@ -676,21 +677,42 @@ function cat_and_child_id( $atts ) {
             'hide_empty' => false,
         ] );
 
-        $html = '<div class="list-cat js-bottom-slider">';
+        if ($cat_list !== 'true') {
+            $html = '<div class="list-cat js-bottom-slider">';
+        } else {
+            $html = '<div class="category-list row">';
+        }
+
+//        $html = '<div class="list-cat js-bottom-slider">';
 
         foreach ( $arr_id as $cat ) {
             $cat_id = $cat;
             $cat_url = get_category_link( $cat_id );
             $cat_name = get_cat_name( $cat_id );
 
-            if ( $categories ) {
-                foreach ( $categories as $term ) {
-                    $term_cat_id = $term->term_id;
-                    $term_cat_name = $term->name;
-                    $term_photo = get_field( 'cat_img', $term );
+            if ($cat_list !== 'true') {
+                if ( $categories ) {
+                    foreach ( $categories as $term ) {
+                        $term_cat_id = $term->term_id;
+                        $term_cat_name = $term->name;
+                        $term_photo = get_field( 'cat_img', $term );
 
-                    if ( $term_cat_id == $cat_id ) {
-                        $html .= sprintf( '<div class="list-cat__item"><a href="%s" class="list-cat__link"><img src="%s" class="list-cat__img" alt="image"><div class="list-cat__title">%s</div></a></div>', $cat_url, $term_photo[ 'url' ], $term_cat_name );
+                        if ( $term_cat_id == $cat_id ) {
+                            $html .= sprintf( '<div class="list-cat__item"><a href="%s" class="list-cat__link"><img src="%s" class="list-cat__img" alt="image"><div class="list-cat__title">%s</div></a></div>', $cat_url, $term_photo[ 'url' ], $term_cat_name );
+                        }
+                    }
+                }
+            } else {
+                if ( $categories ) {
+                    foreach ( $categories as $term ) {
+                        $term_cat_id = $term->term_id;
+                        $term_cat_name = $term->name;
+                        $term_photo = get_field( 'cat_img', $term );
+                        $link_text = pll__('Text Category Link');
+
+                        if ( $term_cat_id == $cat_id ) {
+                            $html .= sprintf( '<div class="col-12 col-md-6 col-lg-4"><a href="%s" class="item-catalog"><div class="item-catalog__title">%s</div><img src="%s" class="item-catalog__image" alt="image"><button type="button" class="btn btn-outline-primary">%s</button></a></div>', $cat_url, $term_cat_name, $term_photo[ 'url' ],  $link_text );
+                        }
                     }
                 }
             }

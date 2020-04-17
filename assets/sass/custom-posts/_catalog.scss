@@ -1,13 +1,132 @@
 .catalog-shortcode-item, .catalog-item {
-    box-shadow: $shadow;
-    border: 1px solid $borderColor;
-    @include smooth_animation;
-    
+  box-shadow: $shadow;
+  border: 1px solid $borderColor;
+  @include smooth_animation;
+
+  &:hover {
+    box-shadow: none;
+  }
+
+  h6 {
+    padding: 15px;
+  }
+}
+
+.catalog-caption {
+  width: 100%;
+  position: relative;
+
+  & img {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  &__wrapper {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    z-index: 33;
+    text-align: center;
+  }
+
+  &__title {
+    background: $glass_bg_color;
+    padding: 30px;
+    white-space: nowrap;
+    display: inline-block;
+    width: auto;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .catalog-caption {
+    &__wrapper {
+      top: 30%;
+      text-align: left;
+    }
+  }
+}
+
+.main-catalog {
+  padding: 20px 0;
+
+  &__description {
+    color: $description_text_color;
+    font-size: 18px;
+    text-align: center;
+    margin: 15px 0 25px;
+  }
+
+  &__wrapper {
+    padding: 25px 0 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .main-catalog {
+    padding: 3% 0;
+
+    & .main-title {
+      width: 100%;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    &__description {
+      width: 100%;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+.item-catalog {
+  display: block;
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin-bottom: 30px;
+  @extend %smooth_animation;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    & .item-catalog__title {
+      @extend %smooth_animation;
+      color: $themeColorThree;
+      text-decoration: none;
+    }
+  }
+
+  &__title {
+    color: $primary_color_1;
+    display: block;
+    font-size: 20px;
+    text-align: center;
+    width: 100%;
+    padding: 12px 0;
+    margin-bottom: 20px;
+
     &:hover {
-        box-shadow: none;
+      @extend %smooth_animation;
+      color: $themeColorThree;
+      text-decoration: none;
     }
-    
-    h6 {
-        padding: 15px;
-    }
+  }
+
+  &__image {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+}
+
+.bottom-content {
+  margin-bottom: 25px;
 }

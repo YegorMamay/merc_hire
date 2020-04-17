@@ -1,128 +1,132 @@
-.list-cat {
-  padding: 30px 0;
-  width: 100%;
-  max-width: 780px;
-  margin-right: auto;
-  margin-left: auto;
+.categories-section {
+  & .list-cat {
+    padding: 30px 0;
+    width: 100%;
+    max-width: 780px;
+    margin-right: auto;
+    margin-left: auto;
 
-  &__item {
-    margin: 0;
-    padding: 10px 0;
+    &__item {
+      margin: 0;
+      padding: 10px 0;
 
-    &.slick-current {
-      & .list-cat__link {
+      &.slick-current {
+        & .list-cat__link {
+          text-decoration: none;
+        }
+      }
+    }
+
+    &__img {
+      width: 100%;
+      max-width: 100%;
+      @extend %smooth_animation;
+      transform: none;
+    }
+
+    &__link {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      margin: 0 auto;
+      text-decoration: underline;
+      overflow: hidden;
+
+      &:hover {
         text-decoration: none;
       }
-    }
-  }
 
-  &__img {
-    width: 100%;
-    max-width: 100%;
-    @extend %smooth_animation;
-    transform: none;
-  }
-
-  &__link {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    margin: 0 auto;
-    text-decoration: underline;
-    overflow: hidden;
-
-    &:hover {
-      text-decoration: none;
-    }
-
-    &:hover {
-      & .list-cat__img {
-        @extend %smooth_animation;
-        transform: scale(1.03);
+      &:hover {
+        & .list-cat__img {
+          @extend %smooth_animation;
+          transform: scale(1.03);
+        }
       }
     }
-  }
 
-  &__title {
-    background: $themeColorOne;
-    color: $primary_color_1;
-    font-size: 20px;
-    text-align: center;
-    width: 100%;
-    padding: 10px 0;
-  }
+    &__title {
+      background: $themeColorOne;
+      color: $primary_color_1;
+      font-size: 20px;
+      text-align: center;
+      width: 100%;
+      padding: 10px 0;
+    }
 
-  & .slick-arrow {
-    background: $glass_bg_color;
-    width: 30px;
-    height: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    transform: translateY(-50%);
-    top: 50%;
-    z-index: 1;
-    cursor: pointer;
+    & .slick-arrow {
+      background: $glass_bg_color;
+      width: 30px;
+      height: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      transform: translateY(-50%);
+      top: 50%;
+      z-index: 1;
+      cursor: pointer;
 
-    &:hover {
+      &:hover {
+        & .slider-icon {
+          @extend %smooth_animation;
+          fill: $themeColorThree;
+        }
+      }
+
+      &.slick-prev {
+        left: 0;
+      }
+
+      &.slick-next {
+        right: 0;
+      }
+
       & .slider-icon {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        stroke-width: 3px;
+        fill: $primary_color_1;
         @extend %smooth_animation;
-        fill: $themeColorThree;
       }
-    }
-
-    &.slick-prev {
-      left: 0;
-    }
-
-    &.slick-next {
-      right: 0;
-    }
-
-    & .slider-icon {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      stroke-width: 3px;
-      fill: $primary_color_1;
-      @extend %smooth_animation;
     }
   }
 }
 
 @media screen and (min-width: 600px) {
-  .list-cat {
-    &__item {
-      padding: 10px 15px;
-    }
-
-    & .slick-arrow {
-      width: 40px;
-      height: 60px;
-
-      &.slick-prev {
-        left: 15px;
-
-        & .slider-icon {
-          padding-right: 2px;
-        }
+  .categories-section {
+    & .list-cat {
+      &__item {
+        padding: 10px 15px;
       }
 
-      &.slick-next {
-        right: 15px;
+      & .slick-arrow {
+        width: 40px;
+        height: 60px;
+
+        &.slick-prev {
+          left: 15px;
+
+          & .slider-icon {
+            padding-right: 2px;
+          }
+        }
+
+        &.slick-next {
+          right: 15px;
+
+          & .slider-icon {
+            padding-left: 2px;
+          }
+        }
 
         & .slider-icon {
-          padding-left: 2px;
+          width: 20px;
+          height: 28px;
         }
-      }
-
-      & .slider-icon {
-        width: 20px;
-        height: 28px;
       }
     }
   }

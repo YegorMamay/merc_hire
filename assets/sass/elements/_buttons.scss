@@ -39,420 +39,418 @@ $btn-link-hover-color: darken($btn-link-color, 15%);
 $btn-link-hover-decoration: underline;
 
 .btn {
-    display: inline-block;
-    font-weight: $btn-font-weight;
-    text-align: center;
+  display: inline-block;
+  font-weight: $btn-font-weight;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: $btn-border-width solid transparent;
+  padding: $btn-padding-y $btn-padding-x;
+  font-size: $btn-font-size;
+  line-height: $btn-line-height;
+  border-radius: $borderRadius;
+  @include smooth_animation;
+
+  &:hover,
+  &:focus {
     text-decoration: none;
-    white-space: nowrap;
-    vertical-align: middle;
-    user-select: none;
-    border: $btn-border-width solid transparent;
-    padding: $btn-padding-y $btn-padding-x;
-    font-size: $btn-font-size;
-    line-height: $btn-line-height;
-    border-radius: $borderRadius;
-    @include smooth_animation;
+  }
 
-    &:hover,
+  &:focus,
+  &.focus {
+    outline: 0;
+    box-shadow: $btn-focus-box-shadow;
+  }
+
+  &.disabled,
+  &:disabled {
+    opacity: $btn-disabled-opacity;
+    box-shadow: none;
+  }
+
+  &:not(:disabled):not(.disabled) {
+    cursor: pointer;
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    background-image: none;
+    box-shadow: $btn-active-box-shadow;
+
     &:focus {
-        text-decoration: none;
+      box-shadow: $btn-focus-box-shadow, $btn-active-box-shadow;
     }
-
-    &:focus,
-    &.focus {
-        outline: 0;
-        box-shadow: $btn-focus-box-shadow;
-    }
-
-    &.disabled,
-    &:disabled {
-        opacity: $btn-disabled-opacity;
-        box-shadow: none;
-    }
-
-    &:not(:disabled):not(.disabled) {
-        cursor: pointer;
-    }
-
-    &:not(:disabled):not(.disabled):active,
-    &:not(:disabled):not(.disabled).active {
-        background-image: none;
-        box-shadow: $btn-active-box-shadow;
-
-        &:focus {
-            box-shadow: $btn-focus-box-shadow, $btn-active-box-shadow;
-        }
-    }
+  }
 }
 
 a.btn.disabled,
 fieldset:disabled a.btn {
-    pointer-events: none;
+  pointer-events: none;
 }
 
 .btn-primary {
-    $background: $themeColorThree;
-    $btn-primary-color: white;
-    $btn-primary-color-hover: white;
-    $border: $themeColorOne;
-    $hover-background: lighten($themeColorThree, 8%);
-    $hover-border: lighten($themeColorThree, 8%);
-    $active-background: $themeColorThree;
-    $active-border: $themeColorThree;
-    
+  $background: $themeColorThree;
+  $btn-primary-color: white;
+  $btn-primary-color-hover: white;
+  $border: $themeColorOne;
+  $hover-background: lighten($themeColorThree, 8%);
+  $hover-border: lighten($themeColorThree, 8%);
+  $active-background: $themeColorThree;
+  $active-border: $themeColorThree;
+
+  @if $btn-enable-gradients {
+    background: $background linear-gradient($btn-gradient-angle, mix(#fff, $background, 15%), $background) repeat-x;
+  } @else {
+    background: $background;
+  }
+
+  color: $btn-primary-color;
+  border-color: $border;
+
+  @if ($btn-enable-shadows) {
+    box-shadow: $btn-box-shadow;
+  }
+
+  &:hover {
+    color: $btn-primary-color-hover;
     @if $btn-enable-gradients {
-        background: $background linear-gradient($btn-gradient-angle, mix(#fff, $background, 15%), $background) repeat-x;
+      background: $hover-background linear-gradient($btn-gradient-angle, mix(#fff, $hover-background, 15%), $hover-background) repeat-x;
     } @else {
-        background: $background;
+      background-color: $hover-background;
     }
-    
-    color: $btn-primary-color;
+    border-color: $hover-border;
+  }
+
+  &:focus,
+  &.focus {
+    @if $btn-enable-shadows {
+      box-shadow: $btn-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
+    } @else {
+      box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $themeColorOne;
+    background-color: $themeColorOne;
     border-color: $border;
+  }
 
-    @if($btn-enable-shadows) {
-        box-shadow: $btn-box-shadow;
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    color: $btn-primary-color;
+    background-color: lighten($active-background, 10%);
+    @if $btn-enable-gradients {
+      background-image: none;
     }
+    border-color: $hover-border;
 
-    &:hover {
-        color: $btn-primary-color-hover;
-        @if $btn-enable-gradients {
-            background: $hover-background linear-gradient($btn-gradient-angle, mix(#fff, $hover-background, 15%), $hover-background) repeat-x;
-        } @else {
-            background-color: $hover-background;
-        }
-        border-color: $hover-border;
+    &:focus {
+      @if $btn-enable-shadows {
+        box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
+      } @else {
+        box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
+      }
     }
-
-    &:focus,
-    &.focus {
-        @if $btn-enable-shadows {
-            box-shadow: $btn-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
-        } @else {
-            box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
-        }
-    }
-
-    &.disabled,
-    &:disabled {
-        color: $themeColorOne;
-        background-color: $themeColorOne;
-        border-color: $border;
-    }
-
-    &:not(:disabled):not(.disabled):active,
-    &:not(:disabled):not(.disabled).active {
-        color: $btn-primary-color;
-        background-color: lighten($active-background, 10%);
-        @if $btn-enable-gradients {
-            background-image: none;
-        }
-        border-color: $hover-border;
-
-        &:focus {
-            @if $btn-enable-shadows {
-                box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
-            } @else {
-                box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
-            }
-        }
-    }
+  }
 }
 
 .btn-secondary {
-    $background: $themeColorThree;
-    $btn-primary-color: white;
-    $btn-primary-color-hover: white;
-    $border: $themeColorOne;
-    $hover-background: lighten($themeColorThree, 8%);
-    $hover-border: lighten($themeColorThree, 8%);
-    $active-background: $themeColorThree;
-    $active-border: $themeColorThree;
+  $background: $themeColorThree;
+  $btn-primary-color: white;
+  $btn-primary-color-hover: white;
+  $border: $themeColorOne;
+  $hover-background: lighten($themeColorThree, 8%);
+  $hover-border: lighten($themeColorThree, 8%);
+  $active-background: $themeColorThree;
+  $active-border: $themeColorThree;
 
+  @if $btn-enable-gradients {
+    background: $background linear-gradient($btn-gradient-angle, mix(#fff, $background, 15%), $background) repeat-x;
+  } @else {
+    background: $background;
+  }
+
+  color: $btn-primary-color;
+  border-color: $border;
+
+  @if ($btn-enable-shadows) {
+    box-shadow: $btn-box-shadow;
+  }
+
+  &:hover {
+    color: $btn-primary-color-hover;
     @if $btn-enable-gradients {
-        background: $background linear-gradient($btn-gradient-angle, mix(#fff, $background, 15%), $background) repeat-x;
+      background: $hover-background linear-gradient($btn-gradient-angle, mix(#fff, $hover-background, 15%), $hover-background) repeat-x;
     } @else {
-        background: $background;
+      background-color: $hover-background;
     }
+    border-color: $hover-border;
+  }
 
-    color: $btn-primary-color;
+  &:focus,
+  &.focus {
+    @if $btn-enable-shadows {
+      box-shadow: $btn-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
+    } @else {
+      box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
+    }
+  }
+
+  &.disabled,
+  &:disabled {
+    color: $themeColorOne;
+    background-color: $themeColorOne;
     border-color: $border;
+  }
 
-    @if($btn-enable-shadows) {
-        box-shadow: $btn-box-shadow;
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    color: $btn-primary-color;
+    background-color: lighten($active-background, 10%);
+    @if $btn-enable-gradients {
+      background-image: none;
     }
+    border-color: $hover-border;
 
-    &:hover {
-        color: $btn-primary-color-hover;
-        @if $btn-enable-gradients {
-            background: $hover-background linear-gradient($btn-gradient-angle, mix(#fff, $hover-background, 15%), $hover-background) repeat-x;
-        } @else {
-            background-color: $hover-background;
-        }
-        border-color: $hover-border;
+    &:focus {
+      @if $btn-enable-shadows {
+        box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
+      } @else {
+        box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
+      }
     }
-
-    &:focus,
-    &.focus {
-        @if $btn-enable-shadows {
-            box-shadow: $btn-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
-        } @else {
-            box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
-        }
-    }
-
-    &.disabled,
-    &:disabled {
-        color: $themeColorOne;
-        background-color: $themeColorOne;
-        border-color: $border;
-    }
-
-    &:not(:disabled):not(.disabled):active,
-    &:not(:disabled):not(.disabled).active {
-        color: $btn-primary-color;
-        background-color: lighten($active-background, 10%);
-        @if $btn-enable-gradients {
-            background-image: none;
-        }
-        border-color: $hover-border;
-
-        &:focus {
-            @if $btn-enable-shadows {
-                box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
-            } @else {
-                box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
-            }
-        }
-    }
+  }
 }
 
 .btn-outline-primary {
-    $btn-outline-primary-color: $themeColorOne;
-    $btn-outline-primary-color-hover: white;
-    $border: $themeColorOne;
-    $hover-background: $themeColorOne;
-    $hover-border: $themeColorOne;
-    $active-background: darken($themeColorOne, 10%);
-    $active-border: darken($themeColorOne, 12.5%);
-    
-    background-color: rgba(255, 255, 255, 0);
-    color: $btn-outline-primary-color;
-    border-color: $border;
+  background-color: transparent;
+  color: $primary_color_1;
+  border: 1px solid $primary_color_1;
+  $btn-outline-primary-color: transparent;
+  $btn-outline-primary-color-hover: transparent;
+  $border: $primary_color_1;
+  $hover-background: transparent;
+  $hover-border: $themeColorThree;
+  $active-background: transparent;
+  $active-border: $themeColorThree;
 
-    @if($btn-enable-shadows) {
-        box-shadow: $btn-box-shadow;
+  @if ($btn-enable-shadows) {
+    box-shadow: $btn-box-shadow;
+  }
+
+  &:hover {
+    color: $themeColorThree;
+    @if $btn-enable-gradients {
+      background: $hover-background linear-gradient($btn-gradient-angle, mix(#fff, $hover-background, 15%), $hover-background) repeat-x;
+    } @else {
+      background-color: $hover-background;
     }
+    border-color: $hover-border;
+  }
 
-    &:hover {
-        color: $btn-outline-primary-color-hover;
-        @if $btn-enable-gradients {
-            background: $hover-background linear-gradient($btn-gradient-angle, mix(#fff, $hover-background, 15%), $hover-background) repeat-x;
-        } @else {
-            background-color: $hover-background;
-        }
-        border-color: $hover-border;
+  &:focus,
+  &.focus {
+    @if $btn-enable-shadows {
+      box-shadow: $btn-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
+    } @else {
+      box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
     }
+  }
 
-    &:focus,
-    &.focus {
-        @if $btn-enable-shadows {
-            box-shadow: $btn-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
-        } @else {
-            box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
-        }
+  &.disabled,
+  &:disabled {
+    color: $primary_color_1;
+    background-color: transparent;
+    border-color: $themeColorThree;
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    color: color-yiq($active-background);
+    background-color: $active-background;
+    @if $btn-enable-gradients {
+      background-image: none;
     }
+    border-color: $active-border;
 
-    &.disabled,
-    &:disabled {
-        color: $themeColorOne;
-        background-color: $themeColorOne;
-        border-color: $border;
+    &:focus {
+      @if $btn-enable-shadows {
+        box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
+      } @else {
+        box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
+      }
     }
-
-    &:not(:disabled):not(.disabled):active,
-    &:not(:disabled):not(.disabled).active {
-        color: color-yiq($active-background);
-        background-color: $active-background;
-        @if $btn-enable-gradients {
-            background-image: none;
-        }
-        border-color: $active-border;
-
-        &:focus {
-            @if $btn-enable-shadows {
-                box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
-            } @else {
-                box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
-            }
-        }
-    }
+  }
 }
 
 .btn-outline-secondary {
-    $btn-outline-primary-color: $themeColorTwo;
-    $btn-outline-primary-color-hover: white;
-    $border: $themeColorTwo;
-    $hover-background: $themeColorTwo;
-    $hover-border: $themeColorTwo;
-    $active-background: darken($themeColorTwo, 10%);
-    $active-border: darken($themeColorTwo, 12.5%);
-    
-    background-color: rgba(255, 255, 255, 0);
-    color: $btn-outline-primary-color;
-    border-color: $border;
+  background-color: transparent;
+  color: $themeColorThree;
+  border: 1px solid $themeColorThree;
+  $btn-outline-primary-color: transparent;
+  $btn-outline-primary-color-hover: transparent;
+  $border: $themeColorThree;
+  $hover-background: transparent;
+  $hover-border: $primary_color_1;
+  $active-background: transparent;
+  $active-border: $primary_color_1;
 
-    @if($btn-enable-shadows) {
-        box-shadow: $btn-box-shadow;
+  @if ($btn-enable-shadows) {
+    box-shadow: $btn-box-shadow;
+  }
+
+  &:hover {
+    color: $primary_color_1;
+    @if $btn-enable-gradients {
+      background: $hover-background linear-gradient($btn-gradient-angle, mix(#fff, $hover-background, 15%), $hover-background) repeat-x;
+    } @else {
+      background-color: $hover-background;
     }
+    border-color: $hover-border;
+  }
 
-    &:hover {
-        color: $btn-outline-primary-color-hover;
-        @if $btn-enable-gradients {
-            background: $hover-background linear-gradient($btn-gradient-angle, mix(#fff, $hover-background, 15%), $hover-background) repeat-x;
-        } @else {
-            background-color: $hover-background;
-        }
-        border-color: $hover-border;
+  &:focus,
+  &.focus {
+    @if $btn-enable-shadows {
+      box-shadow: $btn-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
+    } @else {
+      box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
     }
+  }
 
-    &:focus,
-    &.focus {
-        @if $btn-enable-shadows {
-            box-shadow: $btn-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
-        } @else {
-            box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
-        }
+  &.disabled,
+  &:disabled {
+    color: $themeColorThree;
+    background-color: transparent;
+    border-color: $themeColorThree;
+  }
+
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    color: color-yiq($active-background);
+    background-color: $active-background;
+    @if $btn-enable-gradients {
+      background-image: none;
     }
+    border-color: $active-border;
 
-    &.disabled,
-    &:disabled {
-        color: $themeColorTwo;
-        background-color: $themeColorTwo;
-        border-color: $border;
+    &:focus {
+      @if $btn-enable-shadows {
+        box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
+      } @else {
+        box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
+      }
     }
-
-    &:not(:disabled):not(.disabled):active,
-    &:not(:disabled):not(.disabled).active {
-        color: color-yiq($active-background);
-        background-color: $active-background;
-        @if $btn-enable-gradients {
-            background-image: none;
-        }
-        border-color: $active-border;
-
-        &:focus {
-            @if $btn-enable-shadows {
-                box-shadow: $btn-active-box-shadow, 0 0 0 $btn-focus-width rgba($border, .5);
-            } @else {
-                box-shadow: 0 0 0 $btn-focus-width rgba($border, .5);
-            }
-        }
-    }
+  }
 }
 
 .btn-link {
-    font-weight: $btn-font-weight;
-    color: $btn-link-color;
+  font-weight: $btn-font-weight;
+  color: $btn-link-color;
+  background-color: transparent;
+
+  &:hover {
+    color: $btn-link-hover-color;
+    text-decoration: $btn-link-hover-decoration;
     background-color: transparent;
+    border-color: transparent;
+  }
 
-    &:hover {
-        color: $btn-link-hover-color;
-        text-decoration: $btn-link-hover-decoration;
-        background-color: transparent;
-        border-color: transparent;
-    }
+  &:focus,
+  &.focus {
+    text-decoration: $btn-link-hover-decoration;
+    border-color: transparent;
+    box-shadow: none;
+  }
 
-    &:focus,
-    &.focus {
-        text-decoration: $btn-link-hover-decoration;
-        border-color: transparent;
-        box-shadow: none;
-    }
-
-    &:disabled,
-    &.disabled {
-        color: $btn-link-disabled-color;
-    }
+  &:disabled,
+  &.disabled {
+    color: $btn-link-disabled-color;
+  }
 }
 
 .btn-lg {
-    padding: $btn-padding-y-lg $btn-padding-x-lg;
-    font-size: $btn-font-size-lg;
-    line-height: $btn-line-height-lg;
-    border-radius: $borderRadius;
+  padding: $btn-padding-y-lg $btn-padding-x-lg;
+  font-size: $btn-font-size-lg;
+  line-height: $btn-line-height-lg;
+  border-radius: $borderRadius;
 }
 
 .btn-sm {
-    padding: $btn-padding-y-sm $btn-padding-x-sm;
-    font-size: $btn-font-size-sm;
-    line-height: $btn-line-height-sm;
-    border-radius: $borderRadius;
+  padding: $btn-padding-y-sm $btn-padding-x-sm;
+  font-size: $btn-font-size-sm;
+  line-height: $btn-line-height-sm;
+  border-radius: $borderRadius;
 }
 
 .btn-block {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 
-    + .btn-block {
-        margin-top: $btn-block-spacing-y;
-    }
+  + .btn-block {
+    margin-top: $btn-block-spacing-y;
+  }
 }
 
 [type='submit'],
 [type='reset'],
 [type='button'] {
-    &.btn-block {
-        width: 100%;
-    }
+  &.btn-block {
+    width: 100%;
+  }
 }
 
 @media (max-width: 1024px) {
-    .btn {
-        padding: 7px 28px;
-        font-size: 15px;
-    }
+  .btn {
+    padding: 12px 28px;
+    font-size: 15px;
+  }
 
-    .btn-sm {
-        padding: 6px 18px;
-        font-size: 13px;
-    }
+  .btn-sm {
+    padding: 6px 18px;
+    font-size: 13px;
+  }
 
-    .btn-lg {
-        padding: 9px 55px;
-        font-size: 18px;
-    }
+  .btn-lg {
+    padding: 9px 55px;
+    font-size: 18px;
+  }
 }
 
 @media (max-width: 768px) {
-    .btn {
-        padding: 6px 26px;
-        font-size: 14px;
-    }
+  .btn {
+    padding: 10px 26px;
+    font-size: 14px;
+  }
 
-    .btn-sm {
-        padding: 5px 16px;
-        font-size: 12px;
-    }
+  .btn-sm {
+    padding: 5px 16px;
+    font-size: 12px;
+  }
 
-    .btn-lg {
-        padding: 8px 50px;
-        font-size: 16px;
-    }
+  .btn-lg {
+    padding: 8px 50px;
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 544px) {
-    .btn {
-        padding: 5px 24px;
-        font-size: 12px;
-    }
+  .btn {
+    padding: 10px 24px;
+    font-size: 12px;
+  }
 
-    .btn-sm {
-        padding: 4px 14px;
-        font-size: 12px;
-    }
+  .btn-sm {
+    padding: 4px 14px;
+    font-size: 12px;
+  }
 
-    .btn-lg {
-        padding: 7px 40px;
-        font-size: 14px;
-    }
+  .btn-lg {
+    padding: 7px 40px;
+    font-size: 14px;
+  }
 }

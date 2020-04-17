@@ -361,14 +361,8 @@
       width: 178px;
       height: 178px;
       animation: spin 3000ms linear infinite normal;
-      animation-play-state: paused;
       position: relative;
       z-index: 5;
-
-      &:hover {
-        animation: spin 3000ms linear infinite normal;
-        animation-play-state: running;
-      }
     }
 
     &__item-title {

@@ -11,7 +11,7 @@
             <h2 class="main-title h2 text-center"><?php echo get_post_meta(get_the_ID(), 'categories_title', true); ?></h2>
             <div class="categories-section__description"><?php echo get_post_meta(get_the_ID(), 'categories_description', true); ?></div>
             <?php $category_list_field = get_post_meta($post->ID, 'categories_list', true); ?>
-            <section class="categories-section__wrapper">
+            <section class="categories-section__wrapper" id="gallery">
                 <?php if (has_nav_menu('footer-categories')) { ?>
                     <div class="categories-section__caption">
                         <?php wp_nav_menu(array(

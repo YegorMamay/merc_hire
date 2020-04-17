@@ -571,7 +571,7 @@
             ]
         });
 
-        $('.js-bottom-slider').slick({
+        $('#gallery .js-bottom-slider').slick({
             infinite: true,
             speed: 700,
             dots: false,
