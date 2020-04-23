@@ -306,10 +306,23 @@
             focusOnSelect: false,
             slidesToShow: 1,
             slidesToScroll: 1,
+            centerMode: true,
+            centerPadding: "260px",
             responsive: [ {
+                breakpoint: 1023,
+                settings: {
+                    centerPadding: "120px"
+                }
+            }, {
+                breakpoint: 767,
+                settings: {
+                    centerPadding: "100px"
+                }
+            }, {
                 breakpoint: 600,
                 settings: {
-                    slidesToShow: 1
+                    centerMode: false,
+                    centerPadding: "0"
                 }
             } ]
         });
