@@ -11751,8 +11751,8 @@ select {
   .order-info__list {
     border: 1px solid #383d45;
     border-radius: 50%;
-    width: 510px;
-    height: 510px;
+    width: 420px;
+    height: 420px;
     position: relative;
   }
   .order-info__list:before {
@@ -11771,8 +11771,9 @@ select {
     display: block;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    width: 178px;
-    height: 178px;
+    width: 155px;
+    height: 155px;
+    border-radius: 50%;
     -webkit-animation: spin 3000ms linear infinite normal;
     animation: spin 3000ms linear infinite normal;
     position: relative;

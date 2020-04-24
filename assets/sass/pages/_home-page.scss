@@ -337,8 +337,8 @@
     &__list {
       border: 1px solid $order_border_color;
       border-radius: $border_round_radius;
-      width: 510px;
-      height: 510px;
+      width: 420px;
+      height: 420px;
       position: relative;
 
       &:before {
@@ -358,8 +358,9 @@
     &__logo {
       display: block;
       box-sizing: border-box;
-      width: 178px;
-      height: 178px;
+      width: 155px;
+      height: 155px;
+      border-radius: 50%;
       animation: spin 3000ms linear infinite normal;
       position: relative;
       z-index: 5;
