@@ -650,7 +650,7 @@ if (!function_exists('sn_catalog_shortcode')) {
 
         endif;
 
-        wp_reset_postdata();        
+        wp_reset_postdata();
     }
 }
 
@@ -729,17 +729,42 @@ function cat_and_child_id( $atts ) {
 
         return $html;
     } else {
-        $html = '<div class="row list-cat">';
+        $html = '<div class="categories-row">';
 
-        foreach ( $arr_id as $cat ) {
-            $cat_id = $cat;
-            $cat_url = get_category_link( $cat_id );
-            $cat_name = get_cat_name( $cat_id );
+        global $post;
 
-            if ( $cat_name ) {
-                $html .= sprintf( '<div class="list-cat__item col-12 col-md-4 col-lg-4"><a href="%s" class="list-cat__link"><div class="list-cat__title">%s</div></a></div>', $cat_url, $cat_name );
+        $current_post = wp_get_object_terms($post->ID, 'sn_cat');
+        $current_post_id = join(', ', wp_list_pluck($current_post, 'term_id'));
+
+        if(!empty($current_post)) {
+            foreach ( $arr_id as $cat ) {
+                $cat_id = $cat;
+                $cat_url = get_category_link( $cat_id );
+
+
+                if ( $name_cpt == 'categories' ) {
+                    $categories_row = get_categories( [
+                        'type' => 'post',
+                        'taxonomy' => 'sn_cat',
+                        'hide_empty' => false,
+                    ] );
+
+                    foreach ($categories_row as $terms) {
+                        $term_cat_id = $terms->term_id;
+                        $term_cat_name = $terms->name;
+                        $term_photo = get_field( 'cat_img', $terms );
+
+                        if ( $term_cat_id == $cat_id && $cat_id !== $current_post_id ) {
+                            $html .= sprintf('<div class="categories-row__item"><a href="%s" class="categories-row__link"><div class="categories-row__title">%s</div><img src="%s" class="categories-row__image" alt="image"></a></div>', $cat_url, $term_cat_name, $term_photo['url']);
+                        }
+
+                        wp_reset_postdata();
+                    }
+
+                }
+
+                wp_reset_postdata();
             }
-
         }
 
         $html .= '</div>';
