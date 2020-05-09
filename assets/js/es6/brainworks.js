@@ -16,7 +16,7 @@
         }
 
         html.removeClass('no-js').addClass('js');
-
+        animateValue('.js-count', 0, 500);
         dropdownPhone();
         scrollToElement();
         sidebarAccordion();
@@ -640,4 +640,37 @@
             ]
         });
     })();
+
+
+    /**
+     * Animate Value
+     * @example
+     * animateValue('.js-count', 0, 500);
+     * @param {string} selector must be with data-value attribute
+     * @param {number} start starting value (default = 0)
+     * @param {number} duration speed for update
+     * @returns {void}
+     */
+    const animateValue = (selector, start, duration) => {
+        $(selector).each(function () {
+            let end = $(this).attr('data-value');
+            let range = end - start;
+            let current = start;
+            let increment = 30;
+            let stepTime = Math.abs(Math.floor(duration / range));
+            let obj = $(this);
+            obj.css('opacity', 0);
+            let timer = setInterval(function () {
+                if (current >= end) {
+                    obj.text(end);
+                    clearInterval(timer);
+                } else {
+                    current += increment;
+                    obj.text(current);
+                }
+                obj.animate({opacity: 1}, duration);
+            }, stepTime);
+        });
+    };
+
 })(window, document, jQuery, window.jpAjax);

@@ -12,6 +12,7 @@
             html.addClass("is-mobile");
         }
         html.removeClass("no-js").addClass("js");
+        animateValue(".js-count", 0, 500);
         dropdownPhone();
         scrollToElement();
         sidebarAccordion();
@@ -354,4 +355,27 @@
             } ]
         });
     })();
+    var animateValue = function animateValue(selector, start, duration) {
+        $(selector).each(function() {
+            var end = $(this).attr("data-value");
+            var range = end - start;
+            var current = start;
+            var increment = 30;
+            var stepTime = Math.abs(Math.floor(duration / range));
+            var obj = $(this);
+            obj.css("opacity", 0);
+            var timer = setInterval(function() {
+                if (current >= end) {
+                    obj.text(end);
+                    clearInterval(timer);
+                } else {
+                    current += increment;
+                    obj.text(current);
+                }
+                obj.animate({
+                    opacity: 1
+                }, duration);
+            }, stepTime);
+        });
+    };
 })(window, document, jQuery, window.jpAjax);
