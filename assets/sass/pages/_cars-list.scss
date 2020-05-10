@@ -12,22 +12,25 @@
 
   &__container {
     position: absolute;
-    transform: translateX(-50%);
-    top: 0;
+    transform: translate(-50%, -50%);
+    top: 50%;
     left: 50%;
     z-index: 33;
     padding: 0;
-    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
   }
 
   &__caption {
     background: $glass_bg_color;
     padding: 15px;
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100%;
   }
 
   &__description {
@@ -56,18 +59,18 @@
 @media screen and (min-width: 575px) {
   .cars-section {
     &__container {
+      transform: translate(-50%, 0);
       padding: 0 15px;
       top: 20%;
-      height: auto;
+      align-items: flex-start;
+      justify-content: flex-start;
     }
 
     &__caption {
       max-width: 420px;
       padding: 25px;
-      display: inline-flex;
       align-items: flex-start;
       justify-content: flex-start;
-      height: auto;
     }
 
     &__description {
@@ -89,6 +92,8 @@
 
   &__wrapper {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     padding: 25px 0;
@@ -97,16 +102,10 @@
   &__block {
     width: 100%;
     max-width: 350px;
-    transform: skew(160deg);
 
-    &:nth-child(2) {
-      border-left: 1px solid $themeColorThree;
-      border-right: 1px solid $themeColorThree;
-    }
   }
 
   &__item {
-    transform: skew(-160deg);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -117,6 +116,7 @@
 
   &__field {
     display: flex;
+    flex-direction: row;
     align-items: flex-start;
     justify-content: center;
     width: 100%;
@@ -124,41 +124,77 @@
 
   &__value {
     color: $primary_color_1;
-    font-size: 35px;
+    font-size: 30px;
+    text-align: center;
+    line-height: 1;
+    display: block;
+    opacity: 0;
   }
 
   &__prefix {
     font-size: 18px;
     display: inline-block;
-    padding-left: 15px;
+    white-space: nowrap;
+    padding-left: 5px;
+    opacity: 0;
+  }
+
+  &__description {
+    color: $description_text_color;
+    text-align: center;
+    font-size: 16px;
+    width: 100%;
+    margin-top: 10px;
   }
 }
 
 @media screen and (min-width: 1024px) {
   .cars-content {
-    padding: 5% 0;
+    padding: 60px 0;
+
+    &__wrapper {
+      flex-direction: row;
+      align-items: center;
+      padding: 60px 0;
+    }
 
     &__item {
-      padding: 10px 35px;
+      padding: 10px 30px;
+      transform: skew(-160deg);
+      height: 150px;
+      min-width: 290px;
     }
 
     &__block {
       width: auto;
       max-width: none;
-    }
+      transform: skew(160deg);
 
-    &__value {
-      padding-right: 75px;
-    }
-
-    &__prefix {
-      margin-left: -70px;
-      padding-left: 0;
+      &:nth-child(2) {
+        border-left: 1px solid $themeColorThree;
+        border-right: 1px solid $themeColorThree;
+      }
     }
 
     &__value {
       font-size: 90px;
-      line-height: 1;
+      height: 80px;
+    }
+
+    &__prefix {
+      margin-right: -45px;
+    }
+
+    &__description {
+      font-size: 18px;
+    }
+  }
+}
+
+@media screen and (min-width: 1100px) {
+  .cars-content {
+    &__item {
+      min-width: 350px;
     }
   }
 }

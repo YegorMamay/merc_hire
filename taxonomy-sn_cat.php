@@ -1,11 +1,13 @@
-<?php get_header(); ?>
+<?php get_header();  ?>
 <div class="cars-section">
-    <?php if (have_posts()) : while (have_posts()) : the_post();
-        $post_id = get_the_ID(); ?>
+    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
         <?php
+        $post_id = get_the_ID();
         $cars_params = get_field('cars_parameters', $post_id);
         $cars_main_image = get_field('cars_main_image', $post_id);
         $additional_parameters = get_field('additional_parameters', $post_id);
+        $content_car = get_field('car_list', $post_id);
+//        echo '<pre>' , var_dump($content_car) , '</pre>';
         ?>
     <div class="cars-section__top-section">
         <img class="cars-section__main-image" src="<?php echo $cars_main_image; ?>" alt="image">
@@ -21,11 +23,11 @@
 <div class="cars-content">
     <div class="container">
         <?php if (!empty($cars_params)) { ?>
-            <div class="cars-content__wrapper">
+            <div class="cars-content__wrapper" id="car-content">
                 <div class="cars-content__block">
                     <div class="cars-content__item">
                         <div class="cars-content__field">
-                            <span class="cars-content__value js-count" data-value="<?php echo $cars_params['cars_price_hour']; ?>"><?php echo $cars_params['cars_price_hour']; ?></span>
+                            <span class="cars-content__value js-count" data-value="<?php echo $cars_params['cars_price_hour']; ?>"></span>
                             <span class="cars-content__prefix"><?php echo $cars_params['cars_price_hour_prefix']; ?></span>
                         </div>
                         <div class="cars-content__description"><?php echo $cars_params['cars_price_hour_text']; ?></div>
@@ -34,7 +36,7 @@
                 <div class="cars-content__block">
                     <div class="cars-content__item">
                         <div class="cars-content__field">
-                            <span class="cars-content__value js-count" data-value="<?php echo $cars_params['cars_price_day']; ?>"><?php echo $cars_params['cars_price_day']; ?></span>
+                            <span class="cars-content__value js-count" data-value="<?php echo $cars_params['cars_price_day']; ?>"></span>
                             <span class="cars-content__prefix"><?php echo $cars_params['cars_price_day_prefix']; ?></span>
                         </div>
                         <div class="cars-content__description"><?php echo $cars_params['cars_price_day_text']; ?></div>
@@ -43,7 +45,7 @@
                 <div class="cars-content__block">
                     <div class="cars-content__item">
                         <div class="cars-content__field">
-                            <span class="cars-content__value js-count" data-value="<?php echo $cars_params['cars_price_other']; ?>"><?php echo $cars_params['cars_price_other']; ?></span>
+                            <span class="cars-content__value js-count" data-value="<?php echo $cars_params['cars_price_other']; ?>"></span>
                             <span class="cars-content__prefix"><?php echo $cars_params['cars_price_other_prefix']; ?></span>
                         </div>
                         <div class="cars-content__description"><?php echo $cars_params['cars_price_other_text']; ?></div>

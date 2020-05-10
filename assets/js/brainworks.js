@@ -12,7 +12,6 @@
             html.addClass("is-mobile");
         }
         html.removeClass("no-js").addClass("js");
-        animateValue(".js-count", 0, 500);
         dropdownPhone();
         scrollToElement();
         sidebarAccordion();
@@ -357,25 +356,35 @@
     })();
     var animateValue = function animateValue(selector, start, duration) {
         $(selector).each(function() {
-            var end = $(this).attr("data-value");
-            var range = end - start;
-            var current = start;
-            var increment = 30;
-            var stepTime = Math.abs(Math.floor(duration / range));
-            var obj = $(this);
-            obj.css("opacity", 0);
+            var countItem = $(this), endValue = parseInt(countItem.attr("data-value")), startValue = start, increment = 0, stepTime = Math.abs(duration / endValue);
             var timer = setInterval(function() {
-                if (current >= end) {
-                    obj.text(end);
-                    clearInterval(timer);
-                } else {
-                    current += increment;
-                    obj.text(current);
-                }
-                obj.animate({
+                countItem.animate({
                     opacity: 1
-                }, duration);
+                }, duration / 2);
+                increment += 20;
+                startValue = increment;
+                countItem.text(startValue);
+                if (startValue >= endValue) {
+                    clearInterval(timer);
+                    countItem.siblings().animate({
+                        opacity: 1
+                    }, duration / 2);
+                }
             }, stepTime);
         });
     };
+    (function() {
+        var contentBlock = $("#car-content"), blockOffset = contentBlock.offset().top, blockPosition = $(window).height() - contentBlock.outerHeight() / 2, scrollPosition = $(window).scrollTop();
+        blockPosition -= blockOffset;
+        if (scrollPosition >= blockPosition * -1) {
+            animateValue(".js-count", 0, 2e3);
+        } else {
+            $(window).on("scroll", function() {
+                if ($(window).scrollTop() >= blockPosition * -1) {
+                    animateValue(".js-count", 0, 2e3);
+                    $(window).off("scroll");
+                }
+            });
+        }
+    })();
 })(window, document, jQuery, window.jpAjax);

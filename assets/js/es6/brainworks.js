@@ -16,7 +16,6 @@
         }
 
         html.removeClass('no-js').addClass('js');
-        animateValue('.js-count', 0, 500);
         dropdownPhone();
         scrollToElement();
         sidebarAccordion();
@@ -645,32 +644,58 @@
     /**
      * Animate Value
      * @example
-     * animateValue('.js-count', 0, 500);
+     * animateValue('.js-count', 0, 2000);
      * @param {string} selector must be with data-value attribute
-     * @param {number} start starting value (default = 0)
-     * @param {number} duration speed for update
+     * @param {number} start value (default = 0)
+     * @param {number} duration speed for update, 1s = 1000
      * @returns {void}
      */
     const animateValue = (selector, start, duration) => {
         $(selector).each(function () {
-            let end = $(this).attr('data-value');
-            let range = end - start;
-            let current = start;
-            let increment = 30;
-            let stepTime = Math.abs(Math.floor(duration / range));
-            let obj = $(this);
-            obj.css('opacity', 0);
-            let timer = setInterval(function () {
-                if (current >= end) {
-                    obj.text(end);
+
+            let countItem = $(this),
+                endValue = parseInt(countItem.attr('data-value')),
+                startValue = start,
+                increment = 0,
+                stepTime = Math.abs(duration / endValue);
+
+            const timer = setInterval(function () {
+
+                countItem.animate({opacity: 1}, duration / 2);
+                increment += 20;
+                startValue = increment;
+                countItem.text(startValue);
+
+                if (startValue >= endValue) {
                     clearInterval(timer);
-                } else {
-                    current += increment;
-                    obj.text(current);
+                    countItem.siblings().animate({opacity: 1}, duration / 2);
                 }
-                obj.animate({opacity: 1}, duration);
+
             }, stepTime);
         });
     };
+
+    (function () {
+
+        let contentBlock = $('#car-content'),
+            blockOffset = contentBlock.offset().top,
+            blockPosition = $(window).height() - contentBlock.outerHeight() / 2,
+            scrollPosition = $(window).scrollTop();
+
+        blockPosition -= blockOffset;
+
+        if (scrollPosition >= blockPosition * -1) {
+            animateValue('.js-count', 0, 2000);
+        } else  {
+            $(window).on('scroll', function () {
+
+                if ($(window).scrollTop() >= blockPosition * -1) {
+                    animateValue('.js-count', 0, 2000);
+                    $(window).off('scroll');
+                }
+            });
+        }
+
+    })();
 
 })(window, document, jQuery, window.jpAjax);
