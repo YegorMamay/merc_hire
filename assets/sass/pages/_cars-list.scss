@@ -105,6 +105,27 @@
 
   }
 
+  &__row {
+    padding: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1150px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  &__col {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 15px;
+    margin-bottom: 30px;
+  }
+
   &__item {
     display: flex;
     flex-direction: column;
@@ -112,6 +133,33 @@
     justify-content: center;
     padding: 10px 15px;
     width: 100%;
+    border-bottom: 1px solid $themeColorThree;
+  }
+
+  &__icon {
+    display: block;
+    width: 60px;
+    height: 60px;
+  }
+
+  &__caption {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: calc(100% - 60px);
+    padding-left: 15px;
+  }
+
+  &__text {
+    color: $description_text_color;
+    font-size: 17px;
+  }
+
+  &__price {
+    color: $primary_color_1;
+    font-size: 25px;
+    margin-top: 3px;
   }
 
   &__field {
@@ -148,6 +196,14 @@
   }
 }
 
+@media screen and (min-width: 575px) {
+  .cars-content {
+    &__col {
+      width: 50%;
+    }
+  }
+}
+
 @media screen and (min-width: 1024px) {
   .cars-content {
     padding: 60px 0;
@@ -163,6 +219,11 @@
       transform: skew(-160deg);
       height: 150px;
       min-width: 290px;
+      border-bottom: none;
+    }
+
+    &__col {
+      width: 33.3333%;
     }
 
     &__block {
@@ -196,5 +257,289 @@
     &__item {
       min-width: 350px;
     }
+  }
+}
+
+.block-cars {
+  width: 100%;
+  padding: 25px 0;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+
+  &__title {
+    display: block;
+    width: 100%;
+    margin: 15px 0 25px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .block-cars {
+    padding: 5% 0;
+
+    &__title {
+      &.h2 {
+        text-align: left;
+      }
+    }
+
+    &__item {
+      margin-bottom: 45px;
+    }
+  }
+}
+
+.car-gallery {
+  width: 75%;
+  padding-right: 25px;
+
+  &__image-wrapper {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__main-image {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    height: auto;
+  }
+
+  &__preview {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow: hidden;
+  }
+
+  &__preview-wrapper {
+    width: calc(25% - 10px);
+    height: auto;
+    position: relative;
+    display: none;
+
+    &:nth-child(-n+4) {
+      display: block;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__preview-image {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    height: auto;
+  }
+
+  &__button {
+    border: none;
+    box-shadow: none;
+    background: $primary_color_1;
+    color: $primary_color_2;
+    font-size: 15px;
+    text-align: center;
+    padding: 6px 12px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    @extend %smooth_animation;
+
+    &:hover, &:focus {
+      @extend %smooth_animation;
+      background: $themeColorThree;
+      color: $primary_color_1;
+    }
+  }
+}
+
+
+.car-option {
+  border: 1px solid $dark_border_color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 25%;
+  padding: 20px 15px;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  &__field {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 15px;
+    margin-bottom: 10px;
+  }
+
+  &__icon {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+
+  &__caption {
+    width: calc(100% - 20px);
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  &__title {
+    color: $description_text_color;
+    font-size: 15px;
+    display: block;
+  }
+
+  &__price {
+    color: $primary_color_1;
+    font-size: 18px;
+    display: block;
+  }
+}
+
+@media screen and(max-width: 991px) {
+  .block-cars {
+    &__item {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  .car-gallery {
+    width: 100%;
+    max-width: 768px;
+    padding-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .car-option {
+    width: 100%;
+    max-width: 768px;
+    &__wrapper {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    &__field {
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .car-option {
+    padding: 20px 0;
+    &__field {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 575px) {
+  .car-gallery {
+    &__button {
+      display: none;
+    }
+  }
+}
+
+.catalog-row {
+  padding: 15px 0;
+  width: 100%;
+}
+
+@media screen and (min-width: 1024px) {
+  .catalog-row {
+    padding: 20px 0 35px;
+  }
+}
+
+.categories-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 100%;
+
+  &__item {
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 0 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    width: 100%;
+    font-size: 16px;
+    text-align: center;
+    margin-bottom: 15px;
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .categories-row {
+    &__item {
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (min-width: 575px) {
+  .categories-row {
+    &__item {
+      width: 33.333%;
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .categories-row {
+    &__item {
+      width: 20%;
+      margin-bottom: 0;
+    }
+  }
+}
+
+.block-content {
+  padding: 15px 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .block-content {
+    padding: 3% 0;
   }
 }
