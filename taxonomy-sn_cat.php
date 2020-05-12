@@ -127,35 +127,37 @@
         <?php endif; ?>
     </div>
 </div>
+<?php get_footer(); ?>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
 <script>
-    for(var i = 1; i < $('.js-car-item').length; i++) {
-        $('#car-gallery-'+ i +'[data-fancybox="gallery'+ i+ '"]').fancybox({
-            speed: 330,
-            loop: true,
-            opacity: 'auto',
-            infobar: true,
-            slideShow: true,
-            fullScreen: true,
-            thumbs: true,
-            closeBtn: true,
-            smallBtn: 'auto',
-            buttons: [
-                "close"
-            ],
-            image: {
-                preload: "auto",
-                protect: true
-            }
-        });
-    }
+    (function ($) {
+        for(var i = 1; i < $('.js-car-item').length; i++) {
+            $('#car-gallery-'+ i +'[data-fancybox="gallery'+ i+ '"]').fancybox({
+                speed: 330,
+                loop: true,
+                opacity: 'auto',
+                infobar: true,
+                slideShow: true,
+                fullScreen: true,
+                thumbs: true,
+                closeBtn: true,
+                smallBtn: 'auto',
+                buttons: [
+                    "close"
+                ],
+                image: {
+                    preload: "auto",
+                    protect: true
+                }
+            });
+        }
 
-    $('.js-car-request').on('click', function () {
-        $('#car-title').val("");
-        var currentCarTitle = $(this).attr('data-title');
-        console.log(currentCarTitle);
-        $('#car-title').val(currentCarTitle);
-    });
+        $('.js-car-request').on('click', function () {
+            $('#car-title').val("");
+            var currentCarTitle = $(this).attr('data-title');
+            console.log(currentCarTitle);
+            $('#car-title').val(currentCarTitle);
+        });
+    })(jQuery);
 </script>
-<?php get_footer(); ?>

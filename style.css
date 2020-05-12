@@ -12498,14 +12498,17 @@ ol.commentlist .comment-body {
   align-items: center;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  -webkit-box-pack: justify;
-  -ms-flex-pack: justify;
-  justify-content: space-between;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  margin-left: -5px;
+  margin-right: -5px;
   overflow: hidden;
 }
 
 .car-gallery__preview-wrapper {
-  width: calc(25% - 10px);
+  width: 25%;
+  padding: 0 5px;
   height: auto;
   position: relative;
   display: none;
@@ -12536,7 +12539,7 @@ ol.commentlist .comment-body {
   text-align: center;
   padding: 6px 12px;
   position: absolute;
-  right: 0;
+  right: 5px;
   bottom: 0;
   z-index: 1;
 }
