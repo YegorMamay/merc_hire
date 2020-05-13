@@ -105,7 +105,7 @@
                                 <?php }?>
                             </div>
                             <div class="car-option__button-wrapper">
-                                <button type="button" data-title="<?php echo $item['car_item_title']; ?>" class="btn btn-primary js-car-request"><?php echo $car_option['car_item_button']; ?></button>
+                                <button type="button" data-title="<?php echo $item['car_item_title']; ?>" class="btn btn-primary js-car-request <?php the_lang_class('js-request'); ?>"><?php echo $car_option['car_item_button']; ?></button>
                             </div>
                         </div>
                     </div>
@@ -154,10 +154,9 @@
         }
 
         $('.js-car-request').on('click', function () {
-            $('#car-title').val("");
+            $('[data-field-id="field11"]').val("");
             var currentCarTitle = $(this).attr('data-title');
-            console.log(currentCarTitle);
-            $('#car-title').val(currentCarTitle);
+            $('[data-field-id="field11"]').val(currentCarTitle);
         });
     })(jQuery);
 </script>
