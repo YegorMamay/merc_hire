@@ -374,17 +374,20 @@
         });
     };
     (function() {
-        var contentBlock = $("#car-content"), blockOffset = contentBlock.offset().top, blockPosition = $(window).height() - contentBlock.outerHeight() / 2, scrollPosition = $(window).scrollTop();
-        blockPosition -= blockOffset;
-        if (scrollPosition >= blockPosition * -1) {
-            animateValue(".js-count", 0, 2e3);
-        } else {
-            $(window).on("scroll", function() {
-                if ($(window).scrollTop() >= blockPosition * -1) {
-                    animateValue(".js-count", 0, 2e3);
-                    $(window).off("scroll");
-                }
-            });
+        var contentBlock = $("#car-content");
+        if (contentBlock.length > 0) {
+            var blockOffset = contentBlock.offset().top, blockPosition = $(window).height() - contentBlock.outerHeight() / 2, scrollPosition = $(window).scrollTop();
+            blockPosition -= blockOffset;
+            if (scrollPosition >= blockPosition * -1) {
+                animateValue(".js-count", 0, 2e3);
+            } else {
+                $(window).on("scroll", function() {
+                    if ($(window).scrollTop() >= blockPosition * -1) {
+                        animateValue(".js-count", 0, 2e3);
+                        $(window).off("scroll");
+                    }
+                });
+            }
         }
     })();
 })(window, document, jQuery, window.jpAjax);

@@ -676,24 +676,26 @@
     };
 
     (function () {
+        let contentBlock = $('#car-content');
 
-        let contentBlock = $('#car-content'),
-            blockOffset = contentBlock.offset().top,
-            blockPosition = $(window).height() - contentBlock.outerHeight() / 2,
-            scrollPosition = $(window).scrollTop();
+        if (contentBlock.length > 0) {
+            let blockOffset = contentBlock.offset().top,
+                blockPosition = $(window).height() - contentBlock.outerHeight() / 2,
+                scrollPosition = $(window).scrollTop();
 
-        blockPosition -= blockOffset;
+            blockPosition -= blockOffset;
 
-        if (scrollPosition >= blockPosition * -1) {
-            animateValue('.js-count', 0, 2000);
-        } else  {
-            $(window).on('scroll', function () {
+            if (scrollPosition >= blockPosition * -1) {
+                animateValue('.js-count', 0, 2000);
+            } else {
+                $(window).on('scroll', function () {
 
-                if ($(window).scrollTop() >= blockPosition * -1) {
-                    animateValue('.js-count', 0, 2000);
-                    $(window).off('scroll');
-                }
-            });
+                    if ($(window).scrollTop() >= blockPosition * -1) {
+                        animateValue('.js-count', 0, 2000);
+                        $(window).off('scroll');
+                    }
+                });
+            }
         }
 
     })();

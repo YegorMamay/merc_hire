@@ -1,20 +1,21 @@
 // popup-maker
 html.pum-open.pum-open-overlay.pum-open-scrollable body > [aria-hidden],
 html.pum-open.pum-open-overlay.pum-open-scrollable body > *[aria-hidden] {
-    padding-right: 0 !important;
+  padding-right: 0 !important;
 }
 
 html.pum-open.pum-open-overlay.pum-open-scrollable .pum-overlay.pum-active {
-    overflow-y: hidden;
+  overflow-y: hidden;
 }
+
 // popup-maker end
 
 @media screen and (min-width: 1024px) {
-    html.pum-open.pum-open-overlay {
-        & body {
-            margin-right: 8px;
-        }
+  html.pum-open.pum-open-overlay {
+    & body {
+      margin-right: 8px;
     }
+  }
 }
 
 //navi menu
@@ -25,3 +26,7 @@ html.pum-open.pum-open-overlay.pum-open-scrollable .pum-overlay.pum-active {
 //        display: block;
 //    }
 //}
+
+.ls-overflow-visible {
+  overflow: hidden !important;
+}

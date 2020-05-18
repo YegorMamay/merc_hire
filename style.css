@@ -9594,6 +9594,10 @@ html.pum-open.pum-open-overlay.pum-open-scrollable .pum-overlay.pum-active {
   }
 }
 
+.ls-overflow-visible {
+  overflow: hidden !important;
+}
+
 .slick-slider {
   position: relative;
   display: block;
@@ -11571,7 +11575,7 @@ select {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  padding: 15% 20px;
+  padding: 6% 20px;
 }
 
 .block-advantages__icon {
@@ -11720,7 +11724,7 @@ select {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: 30px;
 }
 
 .order-info__item-title {
@@ -15764,4 +15768,14 @@ img {
   .page-404 {
     background-image: none;
   }
+}
+
+@media screen and (min-width: 575px) {
+  .blog .row h3 {
+    text-align: left;
+  }
+}
+
+.ls-fullscreen-wrapper {
+  overflow: hidden !important;
 }
