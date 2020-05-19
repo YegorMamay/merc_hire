@@ -60,35 +60,30 @@
     };
     var reviews = function reviews(container) {
         var element = $(container);
-        if (element.children().length > 1 && typeof $.fn.slick === "function") {
+        if (element.children().length > 2 && typeof $.fn.slick === "function") {
             element.slick({
                 adaptiveHeight: false,
                 autoplay: false,
                 autoplaySpeed: 3e3,
                 arrows: true,
-                prevArrow: '<button type="button" class="slick-prev">&lsaquo;</button>',
-                nextArrow: '<button type="button" class="slick-next">&rsaquo;</button>',
-                dots: false,
+                prevArrow: '<button type="button" class="slick-prev"><svg class="slider-icon"><use xlink:href="#arrow-left"></use></svg></button>',
+                nextArrow: '<button type="button" class="slick-next"><svg class="slider-icon"><use xlink:href="#arrow-right"></use></svg></button>',
+                dots: true,
                 dotsClass: "slick-dots",
                 draggable: true,
                 fade: false,
                 infinite: true,
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                speed: 300,
+                swipe: true,
+                zIndex: 10,
                 responsive: [ {
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 1
-                    }
-                }, {
                     breakpoint: 768,
                     settings: {
                         slidesToShow: 1
                     }
-                } ],
-                slidesToShow: 1,
-                slidesToScroll: 1,
-                speed: 300,
-                swipe: true,
-                zIndex: 10
+                } ]
             });
         }
     };
