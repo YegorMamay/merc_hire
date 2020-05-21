@@ -33,7 +33,7 @@ if (!function_exists('bw_polylang_shortcode')) {
         if (function_exists('pll_the_languages')) {
             $flags = pll_the_languages($atts);
 
-            if (0 === (int) $atts['dropdown']) {
+            if (0 === (int)$atts['dropdown']) {
                 $flags = sprintf('<ul class="lang">%s</ul>', $flags);
             }
 
@@ -202,6 +202,7 @@ if (!function_exists('bw_html_sitemap')) {
         $ignoreposttypes = array(
             'attachment',
             'popup',
+            'reviews'
         );
 
         $post_types = get_post_types($args, 'objects');
@@ -219,7 +220,9 @@ if (!function_exists('bw_html_sitemap')) {
                 $posts_array = get_posts($args);
                 $output .= '<ul class="sitemap-list">';
                 foreach ($posts_array as $pst) {
+
                     $output .= '<li class="sitemap-item"><a class="sitemap-link" href="' . get_permalink($pst->ID) . '">' . $pst->post_title . '</a></li>';
+
                 }
                 $output .= '</ul>';
             }
@@ -242,7 +245,7 @@ if (!function_exists('bw_last_posts')) {
      * - count - число новостей для вывода (по-стандарту: 3)
      * - button_title - текст в кнопке (по-стандарту: 'Читать полностью')
      *
-     * @param  array $atts Аттрибуты шорткода
+     * @param array $atts Аттрибуты шорткода
      *
      * @return string       Разметка (на Bootstrap)
      */
@@ -622,13 +625,13 @@ if (!function_exists('sn_catalog_shortcode')) {
         ), $atts);
 
         $args = array(
-            'posts_per_page'        => $atts['count'],
-            'post_type'      => 'sn_catalogs',
+            'posts_per_page' => $atts['count'],
+            'post_type' => 'sn_catalogs',
             'tax_query' => array(
                 array(
                     'taxonomy' => 'sn_cat',
-                    'field'    => 'id',
-                    'terms'    => $atts['id'],
+                    'field' => 'id',
+                    'terms' => $atts['id'],
                 ),
             ),
         );
@@ -637,15 +640,17 @@ if (!function_exists('sn_catalog_shortcode')) {
 
         if ($query->have_posts()) : ?>
             <div class="row">
-            <?php while ($query->have_posts()) : $query->the_post(); ?>
-                <div class="col-12 col-sm-12 col-md-4">
-                    <div class="catalog-shortcode-item">
-                        <div><a href="<?php the_permalink(); ?>" class="image-catalogs"><?php the_post_thumbnail(); ?></a></div>
-                        <h6 class="text-center"><a href="<?php the_permalink(); ?>" class="title-catalogs"><?php the_title(); ?></a></h6>
-                    </div>
+                <?php while ($query->have_posts()) : $query->the_post(); ?>
+                    <div class="col-12 col-sm-12 col-md-4">
+                        <div class="catalog-shortcode-item">
+                            <div><a href="<?php the_permalink(); ?>"
+                                    class="image-catalogs"><?php the_post_thumbnail(); ?></a></div>
+                            <h6 class="text-center"><a href="<?php the_permalink(); ?>"
+                                                       class="title-catalogs"><?php the_title(); ?></a></h6>
+                        </div>
                         <div class="sp-xs-3"></div>
-                </div>
-                    <?php endwhile; ?>
+                    </div>
+                <?php endwhile; ?>
             </div>
         <?php else :
 
@@ -656,7 +661,6 @@ if (!function_exists('sn_catalog_shortcode')) {
 }
 
 
-
 add_shortcode('sn_cat', 'cat_and_child_id');
 
 /**
@@ -665,18 +669,19 @@ add_shortcode('sn_cat', 'cat_and_child_id');
  * Работает как с указанием таксономии так и без
  * при указании таксономии показывает все категории [sn_cat id="7, 78, 82" term="name_term"]
  */
-function cat_and_child_id( $atts ) {
+function cat_and_child_id($atts)
+{
     $str = $atts['id'];
-    $arr_id = explode( ', ', $str );
+    $arr_id = explode(', ', $str);
     $name_cpt = $atts['term'];
     $cat_list = $atts['list'];
 
-    if ( taxonomy_exists( $name_cpt ) ) {
-        $categories = get_categories( [
+    if (taxonomy_exists($name_cpt)) {
+        $categories = get_categories([
             'type' => 'post',
             'taxonomy' => $name_cpt,
             'hide_empty' => false,
-        ] );
+        ]);
 
         if ($cat_list !== 'true') {
             $html = '<div class="list-cat js-bottom-slider">';
@@ -686,41 +691,41 @@ function cat_and_child_id( $atts ) {
 
 //        $html = '<div class="list-cat js-bottom-slider">';
 
-        foreach ( $arr_id as $cat ) {
+        foreach ($arr_id as $cat) {
             $cat_id = $cat;
-            $cat_url = get_category_link( $cat_id );
-            $cat_name = get_cat_name( $cat_id );
+            $cat_url = get_category_link($cat_id);
+            $cat_name = get_cat_name($cat_id);
 
             if ($cat_list !== 'true') {
-                if ( $categories ) {
-                    foreach ( $categories as $term ) {
+                if ($categories) {
+                    foreach ($categories as $term) {
                         $term_cat_id = $term->term_id;
                         $term_cat_name = $term->name;
-                        $term_photo = get_field( 'cat_img', $term );
+                        $term_photo = get_field('cat_img', $term);
 
-                        if ( $term_cat_id == $cat_id ) {
-                            $html .= sprintf( '<div class="list-cat__item"><a href="%s" class="list-cat__link"><img src="%s" class="list-cat__img" alt="image"><div class="list-cat__title">%s</div></a></div>', $cat_url, $term_photo[ 'url' ], $term_cat_name );
+                        if ($term_cat_id == $cat_id) {
+                            $html .= sprintf('<div class="list-cat__item"><a href="%s" class="list-cat__link"><img src="%s" class="list-cat__img" alt="image"><div class="list-cat__title">%s</div></a></div>', $cat_url, $term_photo['url'], $term_cat_name);
                         }
                     }
                 }
             } else {
-                if ( $categories ) {
-                    foreach ( $categories as $term ) {
+                if ($categories) {
+                    foreach ($categories as $term) {
                         $term_cat_id = $term->term_id;
                         $term_cat_name = $term->name;
-                        $term_photo = get_field( 'cat_img', $term );
+                        $term_photo = get_field('cat_img', $term);
                         $link_text = pll__('Text Category Link');
 
-                        if ( $term_cat_id == $cat_id ) {
-                            $html .= sprintf( '<div class="col-12 col-md-6 col-lg-4"><a href="%s" class="item-catalog"><div class="item-catalog__title">%s</div><img src="%s" class="item-catalog__image" alt="image"><button type="button" class="btn btn-outline-primary">%s</button></a></div>', $cat_url, $term_cat_name, $term_photo[ 'url' ],  $link_text );
+                        if ($term_cat_id == $cat_id) {
+                            $html .= sprintf('<div class="col-12 col-md-6 col-lg-4"><a href="%s" class="item-catalog"><div class="item-catalog__title">%s</div><img src="%s" class="item-catalog__image" alt="image"><button type="button" class="btn btn-outline-primary">%s</button></a></div>', $cat_url, $term_cat_name, $term_photo['url'], $link_text);
                         }
                     }
                 }
             }
 
-            if ( $cat_name ) {
+            if ($cat_name) {
 
-                $html .= sprintf( '<div class="list-cat__item col-12 col-md-4 col-lg-4"><a href="%s" class="list-cat__link"><div class="list-cat__title">%s</div></a></div>', $cat_url, $cat_name );
+                $html .= sprintf('<div class="list-cat__item col-12 col-md-4 col-lg-4"><a href="%s" class="list-cat__link"><div class="list-cat__title">%s</div></a></div>', $cat_url, $cat_name);
 
             }
 
@@ -737,25 +742,25 @@ function cat_and_child_id( $atts ) {
         $current_post = wp_get_object_terms($post->ID, 'sn_cat');
         $current_post_id = join(', ', wp_list_pluck($current_post, 'term_id'));
 
-        if(!empty($current_post)) {
-            foreach ( $arr_id as $cat ) {
+        if (!empty($current_post)) {
+            foreach ($arr_id as $cat) {
                 $cat_id = $cat;
-                $cat_url = get_category_link( $cat_id );
+                $cat_url = get_category_link($cat_id);
 
 
-                if ( $name_cpt == 'categories' ) {
-                    $categories_row = get_categories( [
+                if ($name_cpt == 'categories') {
+                    $categories_row = get_categories([
                         'type' => 'post',
                         'taxonomy' => 'sn_cat',
                         'hide_empty' => false,
-                    ] );
+                    ]);
 
                     foreach ($categories_row as $terms) {
                         $term_cat_id = $terms->term_id;
                         $term_cat_name = $terms->name;
-                        $term_photo = get_field( 'cat_img', $terms );
+                        $term_photo = get_field('cat_img', $terms);
 
-                        if ( $term_cat_id == $cat_id && $cat_id !== $current_post_id ) {
+                        if ($term_cat_id == $cat_id && $cat_id !== $current_post_id) {
                             $html .= sprintf('<div class="categories-row__item"><a href="%s" class="categories-row__link"><div class="categories-row__title">%s</div><img src="%s" class="categories-row__image" alt="image"></a></div>', $cat_url, $term_cat_name, $term_photo['url']);
                         }
 

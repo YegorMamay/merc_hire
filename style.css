@@ -13037,6 +13037,56 @@ ol.commentlist .comment-body {
   opacity: 0;
 }
 
+#top .mfp-content {
+  max-width: 95%;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+#top .mfp-container {
+  cursor: pointer;
+}
+
+#top .mfp-close {
+  cursor: pointer;
+}
+
+#top .mfp-figure:after {
+  content: none;
+}
+
+#top .mfp-img {
+  cursor: -webkit-zoom-in;
+  cursor: zoom-in;
+  width: auto;
+  max-width: 800px;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+
+#top .mfp-img.active {
+  cursor: -webkit-zoom-out;
+  cursor: zoom-out;
+  -webkit-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  width: 100%;
+  max-width: 1250px;
+  max-height: none !important;
+}
+
+@media screen and (min-width: 1400px) {
+  #top .mfp-img {
+    cursor: -webkit-zoom-in;
+    cursor: zoom-in;
+    max-width: 960px;
+  }
+  #top .mfp-img.active {
+    cursor: -webkit-zoom-out;
+    cursor: zoom-out;
+    max-width: 1450px;
+  }
+}
+
 .review-item {
   background: #0f1215;
   margin-bottom: 30px;
@@ -13438,7 +13488,6 @@ h1, h2, h3, h4, h5, h6, h1.hero-title {
   font-family: "Tinos", serif;
   line-height: 1.2;
   font-weight: normal;
-  text-align: center;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a, h1.hero-title a {
@@ -13454,7 +13503,6 @@ h1 a:hover, h2 a:hover, h3 a:hover, h4 a:hover, h5 a:hover, h6 a:hover, h1.hero-
   font-family: "Tinos", serif;
   line-height: 1.2;
   font-weight: normal;
-  text-align: center;
 }
 
 h1.hero-title {

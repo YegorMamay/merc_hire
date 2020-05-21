@@ -31,7 +31,7 @@
     </section>
     <section class="block-advantages">
         <div class="container">
-            <h2 class="main-title h2"><?php echo get_post_meta(get_the_ID(), 'advantages_title', true); ?></h2>
+            <h2 class="main-title text-center h2"><?php echo get_post_meta(get_the_ID(), 'advantages_title', true); ?></h2>
             <div class="block-advantages__wrapper">
                 <?php
                 $advantages_list = get_field('advantages_list');
@@ -79,7 +79,7 @@
 <?php layerslider(4); ?>
     <section class="bottom-section">
         <div class="container">
-            <h2 class="main-title h2"><?php echo get_post_meta(get_the_ID(), 'client_title', true); ?></h2>
+            <h2 class="main-title text-center h2"><?php echo get_post_meta(get_the_ID(), 'client_title', true); ?></h2>
             <div class="bottom-section__wrapper js-client-slider">
                 <?php
                 $client_list = get_field('client_list');
